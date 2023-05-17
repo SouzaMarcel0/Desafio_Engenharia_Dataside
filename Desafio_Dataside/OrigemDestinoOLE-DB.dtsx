@@ -7,15 +7,27 @@
   DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
   DTS:DTSID="{E4B712E0-4FC5-4B0D-88A3-699D2EB072E5}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{C0D7B4F0-DC22-4719-AAA9-C7E421A6D5BA}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{E1D3AEFB-99B6-4B3C-B004-A72426B08A1C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ACER-NITRO-5.DESAFIO_SQUAD_3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DFBE9E1D-AE34-4B86-9D1B-E69F239FDFA0}"
+      DTS:ObjectName="ACER-NITRO-5.DESAFIO_SQUAD_3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ACER-NITRO-5;Initial Catalog=DESAFIO_SQUAD_3;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{DFBE9E1D-AE34-4B86-9D1B-E69F239FDFA0}ACER-NITRO-5.DESAFIO_SQUAD_3;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.EXEMPLO]"
       DTS:CreationName="OLEDB"
@@ -94,7 +106,7 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
@@ -291,7 +303,7 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="A variável que contém o comando SQL a ser executado."
@@ -535,21 +547,21 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
-<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
-<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="201,42"
+          Size="200.8,41.6"
           Id="Package\Origem-Destino-OLE-DB"
-          TopLeft="122,131" />
+          TopLeft="108.428571399681,97.3529412059635" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -559,11 +571,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Origem-Destino-OLE-DB\Origem OLE DB"
           TopLeft="174,78" />
         <NodeLayout
-          Size="159,42"
+          Size="159.2,41.6"
           Id="Package\Origem-Destino-OLE-DB\Destino OLE DB"
           TopLeft="194,257" />
         <EdgeLayout
@@ -604,7 +616,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Origem-Destino-OLE-DB\Origem OLE DB">
+    design-time-name="Package\Origem-Destino-OLE-DB\Destino OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -617,7 +629,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Origem-Destino-OLE-DB\Destino OLE DB">
+    design-time-name="Package\Origem-Destino-OLE-DB\Origem OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
