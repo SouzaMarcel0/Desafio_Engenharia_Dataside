@@ -11,11 +11,23 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{C0D7B4F0-DC22-4719-AAA9-C7E421A6D5BA}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{285FBA7D-9F7A-45C0-BF00-CCB8E7C92AF3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ACER-NITRO-5.DESAFIO_SQUAD_3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DFBE9E1D-AE34-4B86-9D1B-E69F239FDFA0}"
+      DTS:ObjectName="ACER-NITRO-5.DESAFIO_SQUAD_3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ACER-NITRO-5;Initial Catalog=DESAFIO_SQUAD_3;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{DFBE9E1D-AE34-4B86-9D1B-E69F239FDFA0}ACER-NITRO-5.DESAFIO_SQUAD_3;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.EXEMPLO]"
       DTS:CreationName="OLEDB"
@@ -147,56 +159,56 @@
                       cachedLength="50"
                       cachedName="product_id"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_id]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\49:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_category_name]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="product_category_name"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_category_name]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_category_name]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\50:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_name_lenght]"
                       cachedDataType="ui1"
                       cachedName="product_name_lenght"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_name_lenght]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\51:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_description_lenght]"
                       cachedDataType="i2"
                       cachedName="product_description_lenght"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_description_lenght]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\52:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_photos_qty]"
                       cachedDataType="ui1"
                       cachedName="product_photos_qty"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_photos_qty]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\53:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_weight_g]"
                       cachedDataType="i4"
                       cachedName="product_weight_g"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_weight_g]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\54:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_length_cm]"
                       cachedDataType="ui1"
                       cachedName="product_length_cm"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_length_cm]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\55:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_height_cm]"
                       cachedDataType="ui1"
                       cachedName="product_height_cm"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_height_cm]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\56:invalid" />
                     <inputColumn
                       refId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].Columns[product_width_cm]"
                       cachedDataType="ui1"
                       cachedName="product_width_cm"
                       externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Destino OLE DB.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_width_cm]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]" />
+                      lineageId="Package\Origem-Destino-OLE-DB\57:invalid" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -291,7 +303,10 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+order_id,
+customer_id
+from [dbo].[order]</property>
                 <property
                   dataType="System.String"
                   description="A variável que contém o comando SQL a ser executado."
@@ -308,7 +323,7 @@
                   dataType="System.Int32"
                   description="Especifica o modo usado para acessar o banco de dados."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
@@ -328,129 +343,38 @@
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_id]"
+                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[order_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
+                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
                       length="50"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_id]"
-                      name="product_id"
+                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[order_id]"
+                      name="order_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_category_name]"
+                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[customer_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_category_name]"
+                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_id]"
                       length="50"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_category_name]"
-                      name="product_category_name"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_name_lenght]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]"
-                      name="product_name_lenght"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_description_lenght]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]"
-                      name="product_description_lenght"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_photos_qty]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]"
-                      name="product_photos_qty"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_weight_g]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]"
-                      name="product_weight_g"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_length_cm]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]"
-                      name="product_length_cm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_height_cm]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]"
-                      name="product_height_cm"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_width_cm]"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]"
-                      name="product_width_cm"
+                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[customer_id]"
+                      name="customer_id"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
+                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
                       dataType="wstr"
                       length="50"
-                      name="product_id" />
+                      name="order_id" />
                     <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_category_name]"
+                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_id]"
                       dataType="wstr"
                       length="50"
-                      name="product_category_name" />
-                    <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_name_lenght]"
-                      dataType="ui1"
-                      name="product_name_lenght" />
-                    <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_description_lenght]"
-                      dataType="i2"
-                      name="product_description_lenght" />
-                    <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_photos_qty]"
-                      dataType="ui1"
-                      name="product_photos_qty" />
-                    <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_weight_g]"
-                      dataType="i4"
-                      name="product_weight_g" />
-                    <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_length_cm]"
-                      dataType="ui1"
-                      name="product_length_cm" />
-                    <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_height_cm]"
-                      dataType="ui1"
-                      name="product_height_cm" />
-                    <externalMetadataColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[product_width_cm]"
-                      dataType="ui1"
-                      name="product_width_cm" />
+                      name="customer_id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -459,52 +383,17 @@
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
+                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
-                      name="product_id" />
+                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
+                      name="order_id" />
                     <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_category_name]"
+                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_category_name]"
-                      name="product_category_name" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_name_lenght]"
-                      dataType="ui1"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_name_lenght]"
-                      name="product_name_lenght" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_description_lenght]"
-                      dataType="i2"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_description_lenght]"
-                      name="product_description_lenght" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_photos_qty]"
-                      dataType="ui1"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_photos_qty]"
-                      name="product_photos_qty" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_weight_g]"
-                      dataType="i4"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_weight_g]"
-                      name="product_weight_g" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_length_cm]"
-                      dataType="ui1"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_length_cm]"
-                      name="product_length_cm" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_height_cm]"
-                      dataType="ui1"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_height_cm]"
-                      name="product_height_cm" />
-                    <outputColumn
-                      refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_width_cm]"
-                      dataType="ui1"
-                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[product_width_cm]"
-                      name="product_width_cm" />
+                      lineageId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_id]"
+                      name="customer_id" />
                     <outputColumn
                       refId="Package\Origem-Destino-OLE-DB\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -549,7 +438,7 @@
         <NodeLayout
           Size="201,42"
           Id="Package\Origem-Destino-OLE-DB"
-          TopLeft="122,131" />
+          TopLeft="108.428571399681,97.3529412059635" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -557,7 +446,7 @@
     design-time-name="Package\Origem-Destino-OLE-DB">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158,42"
           Id="Package\Origem-Destino-OLE-DB\Origem OLE DB"
@@ -597,14 +486,16 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="2.25,73.5,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Origem-Destino-OLE-DB\Origem OLE DB">
+    design-time-name="Package\Origem-Destino-OLE-DB\Destino OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -617,7 +508,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Origem-Destino-OLE-DB\Destino OLE DB">
+    design-time-name="Package\Origem-Destino-OLE-DB\Origem OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
