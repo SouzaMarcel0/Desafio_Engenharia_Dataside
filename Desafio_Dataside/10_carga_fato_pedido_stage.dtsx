@@ -1,0 +1,865 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2023 3:38:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-PCFB7AV"
+  DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
+  DTS:DTSID="{9550A706-2A65-4160-9442-24EAEF0F7A03}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{1F50F85E-7B6A-45E3-84D0-565AA03B52DA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga_Fato_Pedido"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarefa Fluxo de Dados"
+      DTS:DTSID="{481ABD04-4688-4D55-94E6-4E042CE30E26}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_Fato_Pedido"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+              description="Origem OLE DB"
+              name="Carga_FT_pedido_Stage"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT 
+                         ft_pedido.order_id AS id_pedido, ft_pedido.customer_id AS id_cliente, ft_pedido.order_status AS status_do_pedido, volume.id_vendedor, CAST(ft_pedido.order_purchase_timestamp AS DATE) AS dt_compra, 
+                         CAST(ft_pedido.order_approved_at AS DATE) AS dt_aprovacao, CAST(ft_pedido.order_purchase_timestamp AS DATE) AS dt_estimativa_entrega, CAST(itens_p.shipping_limit_date AS DATE) AS dt_limite_envio, 
+                         CAST(ft_pedido.order_delivered_carrier_date AS DATE) AS dt_envio, CAST(ft_pedido.order_delivered_customer_date AS DATE) AS dt_entrega, pgto_ped.payment_value AS valor_total_pago, 
+                         valor_frete.sum_freight_value AS valor_frete, pgto_ped.payment_installments AS qtde_parcelas, valor_frete.qtde AS qtde_itens_pedido, volume.volume_cm3, volume.peso_total_g
+FROM            [order] AS ft_pedido LEFT OUTER JOIN
+                         order_items AS itens_p ON ft_pedido.order_id = itens_p.order_id LEFT OUTER JOIN
+                         order_payments AS pgto_ped ON ft_pedido.order_id = pgto_ped.order_id LEFT OUTER JOIN
+                             (SELECT        order_id, SUM(freight_value) AS sum_freight_value, MAX(order_item_id) AS qtde
+                               FROM            order_items
+                               GROUP BY order_id) AS valor_frete ON ft_pedido.order_id = valor_frete.order_id LEFT OUTER JOIN
+                             (SELECT        itens_p.seller_id AS id_vendedor, itens_p.order_id, SUM(CAST(prod.product_length_cm AS INT) * CAST(prod.product_height_cm AS INT) * CAST(prod.product_width_cm AS INT)) AS volume_cm3, 
+                                                         SUM(prod.product_weight_g) AS peso_total_g
+                               FROM            products AS prod INNER JOIN
+                                                         order_items AS itens_p ON prod.product_id = itens_p.product_id
+                               GROUP BY itens_p.order_id, itens_p.seller_id) AS volume ON ft_pedido.order_id = volume.order_id</property>
+                <property
+                  dataType="System.String"
+                  description="A variável que contém o comando SQL a ser executado."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Connections[OleDbConnection]"
+                  connectionManagerID="{55F95565-A04F-4B3F-B7A3-BA25E4829265}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERP]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB]"
+                  name="Saída de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_pedido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[id_pedido]"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_pedido]"
+                      name="id_pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[id_cliente]"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_cliente]"
+                      name="id_cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[status_do_pedido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[status_do_pedido]"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[status_do_pedido]"
+                      name="status_do_pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_vendedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[id_vendedor]"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_vendedor]"
+                      name="id_vendedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_compra]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_compra]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_compra]"
+                      name="dt_compra"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_aprovacao]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_aprovacao]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_aprovacao]"
+                      name="dt_aprovacao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_estimativa_entrega]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_estimativa_entrega]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_estimativa_entrega]"
+                      name="dt_estimativa_entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_limite_envio]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_limite_envio]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_limite_envio]"
+                      name="dt_limite_envio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_envio]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_envio]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_envio]"
+                      name="dt_envio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_entrega]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_entrega]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_entrega]"
+                      name="dt_entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[valor_total_pago]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_total_pago]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[valor_total_pago]"
+                      name="valor_total_pago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[valor_frete]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_frete]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[valor_frete]"
+                      name="valor_frete"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[qtde_parcelas]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[qtde_parcelas]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[qtde_parcelas]"
+                      name="qtde_parcelas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[qtde_itens_pedido]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[qtde_itens_pedido]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[qtde_itens_pedido]"
+                      name="qtde_itens_pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[volume_cm3]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[volume_cm3]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[volume_cm3]"
+                      name="volume_cm3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[peso_total_g]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[peso_total_g]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[peso_total_g]"
+                      name="peso_total_g"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[status_do_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      name="status_do_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[id_vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_vendedor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_compra]"
+                      dataType="dbDate"
+                      name="dt_compra" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_aprovacao]"
+                      dataType="dbDate"
+                      name="dt_aprovacao" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_estimativa_entrega]"
+                      dataType="dbDate"
+                      name="dt_estimativa_entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_limite_envio]"
+                      dataType="dbDate"
+                      name="dt_limite_envio" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_envio]"
+                      dataType="dbDate"
+                      name="dt_envio" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[dt_entrega]"
+                      dataType="dbDate"
+                      name="dt_entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_total_pago]"
+                      dataType="r8"
+                      name="valor_total_pago" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_frete]"
+                      dataType="r8"
+                      name="valor_frete" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[qtde_parcelas]"
+                      dataType="ui1"
+                      name="qtde_parcelas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[qtde_itens_pedido]"
+                      dataType="ui1"
+                      name="qtde_itens_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[volume_cm3]"
+                      dataType="i4"
+                      name="volume_cm3" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].ExternalColumns[peso_total_g]"
+                      dataType="i4"
+                      name="peso_total_g" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[id_pedido]"
+                      name="id_pedido" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[id_cliente]"
+                      name="id_cliente" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[status_do_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[status_do_pedido]"
+                      name="status_do_pedido" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[id_vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[id_vendedor]"
+                      name="id_vendedor" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_compra]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_compra]"
+                      name="dt_compra" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_aprovacao]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_aprovacao]"
+                      name="dt_aprovacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_estimativa_entrega]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_estimativa_entrega]"
+                      name="dt_estimativa_entrega" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_limite_envio]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_limite_envio]"
+                      name="dt_limite_envio" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_envio]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_envio]"
+                      name="dt_envio" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_entrega]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[dt_entrega]"
+                      name="dt_entrega" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_total_pago]"
+                      dataType="r8"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_total_pago]"
+                      name="valor_total_pago" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_frete]"
+                      dataType="r8"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_frete]"
+                      name="valor_frete" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[qtde_parcelas]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[qtde_parcelas]"
+                      name="qtde_parcelas" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[qtde_itens_pedido]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[qtde_itens_pedido]"
+                      name="qtde_itens_pedido" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[volume_cm3]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[volume_cm3]"
+                      name="volume_cm3" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[peso_total_g]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[peso_total_g]"
+                      name="peso_total_g" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino OLE DB"
+              name="Destino_Stage_FT_Pedido"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">[dbo].[STG_Fato_Pedido]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Connections[OleDbConnection]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB]"
+                  errorOrTruncationOperation="Inserir"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de Destino OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[id_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_pedido"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_pedido]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_pedido]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_cliente"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_cliente]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_cliente]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[status_do_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="status_do_pedido"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[status_do_pedido]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[status_do_pedido]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[id_vendedor]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_vendedor"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_vendedor]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[id_vendedor]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[dt_compra]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_compra"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_compra]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_compra]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[dt_aprovacao]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_aprovacao"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_aprovacao]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_aprovacao]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[dt_estimativa_entrega]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_estimativa_entrega"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_estimativa_entrega]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_estimativa_entrega]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[dt_limite_envio]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_limite_envio"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_limite_envio]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_limite_envio]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[dt_envio]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_envio"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_envio]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_envio]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[dt_entrega]"
+                      cachedDataType="dbDate"
+                      cachedName="dt_entrega"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_entrega]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[dt_entrega]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[valor_total_pago]"
+                      cachedDataType="r8"
+                      cachedName="valor_total_pago"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_total_pago]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[valor_total_pago]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[valor_frete]"
+                      cachedDataType="r8"
+                      cachedName="valor_frete"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_frete]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[valor_frete]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[qtde_parcelas]"
+                      cachedDataType="ui1"
+                      cachedName="qtde_parcelas"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[qtde_parcelas]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[qtde_parcelas]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[qtde_itens_pedido]"
+                      cachedDataType="ui1"
+                      cachedName="qtde_itens_pedido"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[qtde_itens_pedido]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[qtde_itens_pedido]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[volume_cm3]"
+                      cachedDataType="i4"
+                      cachedName="volume_cm3"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[volume_cm3]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[volume_cm3]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].Columns[peso_total_g]"
+                      cachedDataType="i4"
+                      cachedName="peso_total_g"
+                      externalMetadataColumnId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[peso_total_g]"
+                      lineageId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB].Columns[peso_total_g]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[status_do_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      name="status_do_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_vendedor]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_vendedor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_compra]"
+                      dataType="dbDate"
+                      name="dt_compra" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_aprovacao]"
+                      dataType="dbDate"
+                      name="dt_aprovacao" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_estimativa_entrega]"
+                      dataType="dbDate"
+                      name="dt_estimativa_entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_limite_envio]"
+                      dataType="dbDate"
+                      name="dt_limite_envio" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_envio]"
+                      dataType="dbDate"
+                      name="dt_envio" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[dt_entrega]"
+                      dataType="dbDate"
+                      name="dt_entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_total_pago]"
+                      dataType="r8"
+                      name="valor_total_pago" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_frete]"
+                      dataType="r8"
+                      name="valor_frete" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[qtde_parcelas]"
+                      dataType="ui1"
+                      name="qtde_parcelas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[qtde_itens_pedido]"
+                      dataType="ui1"
+                      name="qtde_itens_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[volume_cm3]"
+                      dataType="i4"
+                      name="volume_cm3" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[peso_total_g]"
+                      dataType="i4"
+                      name="peso_total_g" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Outputs[Saída de Erro de Destino OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Destino OLE DB"
+                  synchronousInputId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_Fato_Pedido.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido.Inputs[Entrada de Destino OLE DB]"
+              name="Saída de Origem OLE DB"
+              startId="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage.Outputs[Saída de Origem OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar_tbl_Fato_Pedido"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{3F6CF068-2ADA-45EF-924D-54B701E1A098}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar_tbl_Fato_Pedido"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{94B00B37-3947-463E-95F2-07E221DF8165}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG_Fato_Pedido" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição]"
+      DTS:CreationName=""
+      DTS:DTSID="{31FA48F9-FB8F-48CF-A857-B229FEDEA237}"
+      DTS:From="Package\Truncar_tbl_Fato_Pedido"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição"
+      DTS:To="Package\Carga_Fato_Pedido" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Carga_Fato_Pedido"
+          TopLeft="200,233" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Truncar_tbl_Fato_Pedido"
+          TopLeft="176,57" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição]"
+          TopLeft="277.5,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,134"
+              Start="0,0"
+              End="11,126.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63"
+                    Point2="0,67"
+                    Point3="4,67" />
+                  <mssgle:LineSegment
+                    End="7,67" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,67"
+                    Point2="11,67"
+                    Point3="11,71" />
+                  <mssgle:LineSegment
+                    End="11,126.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga_Fato_Pedido">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage"
+          TopLeft="159,72" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido"
+          TopLeft="153,236" />
+        <EdgeLayout
+          Id="Package\Carga_Fato_Pedido.Paths[Saída de Origem OLE DB]"
+          TopLeft="259.25,114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,122"
+              Start="0,0"
+              End="0,114.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,114.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Fato_Pedido\Carga_FT_pedido_Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Fato_Pedido\Destino_Stage_FT_Pedido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
