@@ -1,68 +1,30 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="5/17/2023 12:14:48 AM"
+  DTS:CreationDate="5/30/2023 10:30:33 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-PCFB7AV"
   DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
-  DTS:DTSID="{E4B712E0-4FC5-4B0D-88A3-699D2EB072E5}"
+  DTS:DTSID="{6F129429-E029-4D46-A39E-94583031AC1A}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{35D4B96A-F0DD-4D27-AD85-4CA749C1EEAF}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{946B151A-2FCB-4868-BD97-4D1B4B60D803}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.EXEMPLO]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{F2525B95-DF81-46A1-98E1-0F96DEFC4503}"
-      DTS:ObjectName="DESKTOP-PCFB7AV\SQLEXPRESS.EXEMPLO">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-PCFB7AV\SQLEXPRESS;Initial Catalog=EXEMPLO;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[ORIGEM]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{1E5271F3-EA1D-4BA6-90E0-C2E6E171F873}"
-      DTS:ObjectName="ORIGEM">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-PCFB7AV\SQLEXPRESS;Initial Catalog=ERP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[STAGE_AREA]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{0F642BD9-9E7E-4BFB-9FF7-67841512AB59}"
-      DTS:ObjectName="STAGE_AREA">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-PCFB7AV\SQLEXPRESS;Initial Catalog=STAGE_AREA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Carga_ERP_to_STAGE_Produtos"
+      DTS:refId="Package\Carga_Produto_Stage"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarefa Fluxo de Dados"
-      DTS:DTSID="{37A2F76F-C824-4DC3-BCB8-F6D92ADB3C91}"
+      DTS:DTSID="{F629950E-D2A5-4613-81DF-DCFB07F79D30}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Carga_ERP_to_STAGE_Produtos"
+      DTS:ObjectName="Carga_Produto_Stage"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -70,11 +32,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo"
+              refId="Package\Carga_Produto_Stage\Carga_Produto_Stage"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
               description="Destino OLE DB"
-              name="Destino_Stage_Produdo"
+              name="Carga_Produto_Stage"
               usesDispositions="true"
               version="4">
               <properties>
@@ -85,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
-                  name="OpenRowset">[STG_Produdo]</property>
+                  name="OpenRowset">[dbo].[STG_Produto]</property>
                 <property
                   dataType="System.String"
                   description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
@@ -127,115 +89,115 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[STAGE_AREA]"
-                  connectionManagerRefId="Package.ConnectionManagers[STAGE_AREA]"
+                  refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Connections[OleDbConnection]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB]"
+                  refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB]"
                   errorOrTruncationOperation="Inserir"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de Destino OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_id]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="product_id"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_id]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_id]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_category_name]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_category_name]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="product_category_name"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_category_name]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_category_name]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_category_name]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_category_name]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_name_lenght]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_name_lenght]"
                       cachedDataType="ui1"
                       cachedName="product_name_lenght"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_name_lenght]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_name_lenght]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_description_lenght]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_description_lenght]"
                       cachedDataType="i2"
                       cachedName="product_description_lenght"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_description_lenght]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_description_lenght]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_photos_qty]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_photos_qty]"
                       cachedDataType="ui1"
                       cachedName="product_photos_qty"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_photos_qty]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_photos_qty]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_weight_g]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_weight_g]"
                       cachedDataType="i4"
                       cachedName="product_weight_g"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_weight_g]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_weight_g]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_length_cm]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_length_cm]"
                       cachedDataType="ui1"
                       cachedName="product_length_cm"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_length_cm]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_length_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_height_cm]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_height_cm]"
                       cachedDataType="ui1"
                       cachedName="product_height_cm"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_height_cm]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_height_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]" />
                     <inputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].Columns[product_width_cm]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].Columns[product_width_cm]"
                       cachedDataType="ui1"
                       cachedName="product_width_cm"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_width_cm]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]" />
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_width_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
                       dataType="wstr"
                       length="50"
                       name="product_id" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_category_name]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_category_name]"
                       dataType="wstr"
                       length="50"
                       name="product_category_name" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_name_lenght]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_name_lenght]"
                       dataType="ui1"
                       name="product_name_lenght" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_description_lenght]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_description_lenght]"
                       dataType="i2"
                       name="product_description_lenght" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_photos_qty]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_photos_qty]"
                       dataType="ui1"
                       name="product_photos_qty" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_weight_g]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_weight_g]"
                       dataType="i4"
                       name="product_weight_g" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_length_cm]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_length_cm]"
                       dataType="ui1"
                       name="product_length_cm" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_height_cm]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_height_cm]"
                       dataType="ui1"
                       name="product_height_cm" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_width_cm]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_width_cm]"
                       dataType="ui1"
                       name="product_width_cm" />
                   </externalMetadataColumns>
@@ -243,22 +205,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Outputs[Saída de Erro de Destino OLE DB]"
+                  refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Outputs[Saída de Erro de Destino OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Saída de Erro de Destino OLE DB"
-                  synchronousInputId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB]">
+                  synchronousInputId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -267,11 +229,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto"
+              refId="Package\Carga_Produto_Stage\Origem_ERP_Product"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
               description="Origem OLE DB"
-              name="Origem_ERP_Produto"
+              name="Origem_ERP_Product"
               usesDispositions="true"
               version="7">
               <properties>
@@ -291,10 +253,7 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
-order_id,
-customer_id
-from [dbo].[order]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.String"
                   description="A variável que contém o comando SQL a ser executado."
@@ -319,205 +278,205 @@ from [dbo].[order]</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[ORIGEM]"
-                  connectionManagerRefId="Package.ConnectionManagers[ORIGEM]"
+                  refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Connections[OleDbConnection]"
+                  connectionManagerID="{55F95565-A04F-4B3F-B7A3-BA25E4829265}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERP]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
                   name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB]"
+                  refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB]"
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_id]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
                       length="50"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_id]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_id]"
                       name="product_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_category_name]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_category_name]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_category_name]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_category_name]"
                       length="50"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_category_name]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_category_name]"
                       name="product_category_name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_name_lenght]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_name_lenght]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_name_lenght]"
                       name="product_name_lenght"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]"
                       dataType="i2"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_description_lenght]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_description_lenght]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_description_lenght]"
                       name="product_description_lenght"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_photos_qty]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_photos_qty]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_photos_qty]"
                       name="product_photos_qty"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_weight_g]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_weight_g]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_weight_g]"
                       name="product_weight_g"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_length_cm]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_length_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_length_cm]"
                       name="product_length_cm"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_height_cm]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_height_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_height_cm]"
                       name="product_height_cm"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_width_cm]"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]"
+                      externalMetadataColumnId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_width_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].Columns[product_width_cm]"
                       name="product_width_cm"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
                       dataType="wstr"
                       length="50"
                       name="product_id" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_category_name]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_category_name]"
                       dataType="wstr"
                       length="50"
                       name="product_category_name" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_name_lenght]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_name_lenght]"
                       dataType="ui1"
                       name="product_name_lenght" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_description_lenght]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_description_lenght]"
                       dataType="i2"
                       name="product_description_lenght" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_photos_qty]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_photos_qty]"
                       dataType="ui1"
                       name="product_photos_qty" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_weight_g]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_weight_g]"
                       dataType="i4"
                       name="product_weight_g" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_length_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_length_cm]"
                       dataType="ui1"
                       name="product_length_cm" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_height_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_height_cm]"
                       dataType="ui1"
                       name="product_height_cm" />
                     <externalMetadataColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[product_width_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB].ExternalColumns[product_width_cm]"
                       dataType="ui1"
                       name="product_width_cm" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB]"
+                  refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB]"
                   isErrorOut="true"
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
                       name="product_id" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_category_name]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_category_name]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_category_name]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_category_name]"
                       name="product_category_name" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_name_lenght]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_name_lenght]"
                       dataType="ui1"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_name_lenght]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_name_lenght]"
                       name="product_name_lenght" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_description_lenght]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_description_lenght]"
                       dataType="i2"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_description_lenght]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_description_lenght]"
                       name="product_description_lenght" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_photos_qty]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_photos_qty]"
                       dataType="ui1"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_photos_qty]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_photos_qty]"
                       name="product_photos_qty" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_weight_g]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_weight_g]"
                       dataType="i4"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_weight_g]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_weight_g]"
                       name="product_weight_g" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_length_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_length_cm]"
                       dataType="ui1"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_length_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_length_cm]"
                       name="product_length_cm" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_height_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_height_cm]"
                       dataType="ui1"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_height_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_height_cm]"
                       name="product_height_cm" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_width_cm]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_width_cm]"
                       dataType="ui1"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[product_width_cm]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[product_width_cm]"
                       name="product_width_cm" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -528,28 +487,28 @@ from [dbo].[order]</property>
           </components>
           <paths>
             <path
-              refId="Package\Carga_ERP_to_STAGE_Produtos.Paths[Saída de Origem OLE DB]"
-              endId="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo.Inputs[Entrada de Destino OLE DB]"
+              refId="Package\Carga_Produto_Stage.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Produto_Stage\Carga_Produto_Stage.Inputs[Entrada de Destino OLE DB]"
               name="Saída de Origem OLE DB"
-              startId="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto.Outputs[Saída de Origem OLE DB]" />
+              startId="Package\Carga_Produto_Stage\Origem_ERP_Product.Outputs[Saída de Origem OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Truncar_Tabela_Produto"
+      DTS:refId="Package\Truncar_Tbl_Produto"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarefa Executar SQL"
-      DTS:DTSID="{e71ce61b-3f71-4a01-9efa-67d830596b8a}"
+      DTS:DTSID="{B58AD390-7CA7-446B-96F5-33C61818EE55}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Truncar_Tabela_Produto"
+      DTS:ObjectName="Truncar_Tbl_Produto"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{0F642BD9-9E7E-4BFB-9FF7-67841512AB59}"
+          SQLTask:Connection="{94B00B37-3947-463E-95F2-07E221DF8165}"
           SQLTask:BypassPrepare="False"
           SQLTask:SqlStatementSource="TRUNCATE TABLE STG_Produto" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
@@ -559,11 +518,11 @@ from [dbo].[order]</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restrição]"
       DTS:CreationName=""
-      DTS:DTSID="{19EA97D9-8B12-4BAA-B594-5A7342FEDA87}"
-      DTS:From="Package\Truncar_Tabela_Produto"
+      DTS:DTSID="{D13941FD-45ED-43C2-A57D-D9FAB4266971}"
+      DTS:From="Package\Truncar_Tbl_Produto"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restrição"
-      DTS:To="Package\Carga_ERP_to_STAGE_Produtos" />
+      DTS:To="Package\Carga_Produto_Stage" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
@@ -578,39 +537,27 @@ from [dbo].[order]</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="246,42"
-          Id="Package\Carga_ERP_to_STAGE_Produtos"
-          TopLeft="59.5,188.788235107775" />
+          Size="188,42"
+          Id="Package\Carga_Produto_Stage"
+          TopLeft="160,258" />
         <NodeLayout
-          Size="201,42"
-          Id="Package\Truncar_Tabela_Produto"
-          TopLeft="116,37" />
+          Size="183,42"
+          Id="Package\Truncar_Tbl_Produto"
+          TopLeft="163,113" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restrição]"
-          TopLeft="216.5,79">
+          TopLeft="254.25,155">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-34,109.788235107775"
+              EndConnector="0,103"
               Start="0,0"
-              End="-34,102.288235107775">
+              End="0,95.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.8941175538875" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,50.8941175538875"
-                    Point2="0,54.8941175538875"
-                    Point3="-4,54.8941175538875" />
-                  <mssgle:LineSegment
-                    End="-30,54.8941175538875" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-30,54.8941175538875"
-                    Point2="-34,54.8941175538875"
-                    Point3="-34,58.8941175538875" />
-                  <mssgle:LineSegment
-                    End="-34,102.288235107775" />
+                    End="0,95.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -623,32 +570,44 @@ from [dbo].[order]</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Carga_ERP_to_STAGE_Produtos">
+    design-time-name="Package\Carga_Produto_Stage">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="188,42"
-          Id="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto"
-          TopLeft="181.5,72.5" />
+          Id="Package\Carga_Produto_Stage\Origem_ERP_Product"
+          TopLeft="240,41" />
         <NodeLayout
-          Size="199,42"
-          Id="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo"
-          TopLeft="178.142857126131,236.529411763365" />
+          Size="188,42"
+          Id="Package\Carga_Produto_Stage\Carga_Produto_Stage"
+          TopLeft="210,211" />
         <EdgeLayout
-          Id="Package\Carga_ERP_to_STAGE_Produtos.Paths[Saída de Origem OLE DB]"
-          TopLeft="276.621428563066,114.1">
+          Id="Package\Carga_Produto_Stage.Paths[Saída de Origem OLE DB]"
+          TopLeft="334,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,122.429411763365"
+              EndConnector="-30,128"
               Start="0,0"
-              End="0,114.929411763365">
+              End="-30,120.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,114.929411763365" />
+                    End="0,60" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60"
+                    Point2="0,64"
+                    Point3="-4,64" />
+                  <mssgle:LineSegment
+                    End="-26,64" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26,64"
+                    Point2="-30,64"
+                    Point3="-30,68" />
+                  <mssgle:LineSegment
+                    End="-30,120.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -661,7 +620,7 @@ from [dbo].[order]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga_ERP_to_STAGE_Produtos\Destino_Stage_Produdo">
+    design-time-name="Package\Carga_Produto_Stage\Origem_ERP_Product">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -674,7 +633,7 @@ from [dbo].[order]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga_ERP_to_STAGE_Produtos\Origem_ERP_Produto">
+    design-time-name="Package\Carga_Produto_Stage\Carga_Produto_Stage">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

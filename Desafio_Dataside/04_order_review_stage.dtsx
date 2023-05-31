@@ -11,8 +11,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{287E734E-93BD-4CB8-A442-D068DAF51F19}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{C43D561A-39A1-4E78-84F3-C5DFD90CE62D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -44,13 +44,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\OrderReview_ERP_to_STAGE"
+      DTS:refId="Package\OrderReview_to_STAGE"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarefa Fluxo de Dados"
       DTS:DTSID="{D23798BD-3241-45F6-B031-A26EFB5746CC}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="OrderReview_ERP_to_STAGE"
+      DTS:ObjectName="OrderReview_to_STAGE"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -58,7 +58,7 @@
           version="1">
           <components>
             <component
-              refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review"
+              refId="Package\OrderReview_to_STAGE\Origem-Order_Review"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
               description="Origem OLE DB"
@@ -107,7 +107,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Connections[OleDbConnection]"
+                  refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
                   connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -115,75 +115,75 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB]"
+                  refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB]"
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_id]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_id]"
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_id]"
                       length="50"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_id]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_id]"
                       name="review_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[order_id]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[order_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
                       length="50"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[order_id]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[order_id]"
                       name="order_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_score]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_score]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_score]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_score]"
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_score]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_score]"
                       name="review_score"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_title]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_title]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_title]"
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_title]"
                       length="50"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_title]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_title]"
                       name="review_comment_title"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_message]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_message]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_message]"
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_message]"
                       length="250"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_message]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_message]"
                       name="review_comment_message"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_creation_date]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_creation_date]"
                       dataType="dbTimeStamp2"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_creation_date]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_creation_date]"
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_creation_date]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_creation_date]"
                       name="review_creation_date"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_answer_timestamp]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_answer_timestamp]"
                       dataType="dbTimeStamp2"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_answer_timestamp]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_answer_timestamp]"
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_answer_timestamp]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_answer_timestamp]"
                       name="review_answer_timestamp"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
@@ -191,97 +191,97 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_id]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_id]"
                       dataType="wstr"
                       length="50"
                       name="review_id" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
                       dataType="wstr"
                       length="50"
                       name="order_id" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_score]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_score]"
                       dataType="ui1"
                       name="review_score" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_title]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_title]"
                       dataType="wstr"
                       length="50"
                       name="review_comment_title" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_message]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_comment_message]"
                       dataType="wstr"
                       length="250"
                       name="review_comment_message" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_creation_date]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_creation_date]"
                       dataType="dbTimeStamp2"
                       name="review_creation_date"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_answer_timestamp]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].ExternalColumns[review_answer_timestamp]"
                       dataType="dbTimeStamp2"
                       name="review_answer_timestamp"
                       scale="7" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB]"
+                  refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB]"
                   isErrorOut="true"
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_id]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_id]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_id]"
                       name="review_id" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
                       name="order_id" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_score]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_score]"
                       dataType="ui1"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_score]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_score]"
                       name="review_score" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_title]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_title]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_title]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_title]"
                       name="review_comment_title" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_message]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_message]"
                       dataType="wstr"
                       length="250"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_message]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_comment_message]"
                       name="review_comment_message" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_creation_date]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_creation_date]"
                       dataType="dbTimeStamp2"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_creation_date]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_creation_date]"
                       name="review_creation_date"
                       scale="7" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_answer_timestamp]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_answer_timestamp]"
                       dataType="dbTimeStamp2"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_answer_timestamp]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[review_answer_timestamp]"
                       name="review_answer_timestamp"
                       scale="7" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      refId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -290,7 +290,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente"
+              refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
               description="Destino OLE DB"
@@ -347,7 +347,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Connections[OleDbConnection]"
+                  refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Connections[OleDbConnection]"
                   connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
                   connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -355,94 +355,94 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB]"
+                  refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB]"
                   errorOrTruncationOperation="Inserir"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de Destino OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_id]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="review_id"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_id]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_id]" />
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_id]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_id]" />
                     <inputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[order_id]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[order_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="order_id"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[order_id]" />
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[order_id]" />
                     <inputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_score]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_score]"
                       cachedDataType="ui1"
                       cachedName="review_score"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_score]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_score]" />
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_score]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_score]" />
                     <inputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_comment_title]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_comment_title]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="review_comment_title"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_title]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_title]" />
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_title]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_title]" />
                     <inputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_comment_message]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_comment_message]"
                       cachedDataType="wstr"
                       cachedLength="250"
                       cachedName="review_comment_message"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_message]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_message]" />
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_message]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_comment_message]" />
                     <inputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_creation_date]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_creation_date]"
                       cachedDataType="dbTimeStamp2"
                       cachedName="review_creation_date"
                       cachedScale="7"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_creation_date]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_creation_date]" />
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_creation_date]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_creation_date]" />
                     <inputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_answer_timestamp]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].Columns[review_answer_timestamp]"
                       cachedDataType="dbTimeStamp2"
                       cachedName="review_answer_timestamp"
                       cachedScale="7"
-                      externalMetadataColumnId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_answer_timestamp]"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_answer_timestamp]" />
+                      externalMetadataColumnId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_answer_timestamp]"
+                      lineageId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB].Columns[review_answer_timestamp]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_id]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_id]"
                       dataType="wstr"
                       length="50"
                       name="review_id" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
                       dataType="wstr"
                       length="50"
                       name="order_id" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_score]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_score]"
                       dataType="ui1"
                       name="review_score" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_title]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_title]"
                       dataType="wstr"
                       length="50"
                       name="review_comment_title" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_message]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_comment_message]"
                       dataType="wstr"
                       length="250"
                       name="review_comment_message" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_creation_date]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_creation_date]"
                       dataType="dbTimeStamp2"
                       name="review_creation_date"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_answer_timestamp]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[review_answer_timestamp]"
                       dataType="dbTimeStamp2"
                       name="review_answer_timestamp"
                       scale="7" />
@@ -451,22 +451,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB]"
+                  refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Saída de Erro de Destino OLE DB"
-                  synchronousInputId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB]">
+                  synchronousInputId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      refId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -477,10 +477,10 @@
           </components>
           <paths>
             <path
-              refId="Package\OrderReview_ERP_to_STAGE.Paths[Saída de Origem OLE DB]"
-              endId="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB]"
+              refId="Package\OrderReview_to_STAGE.Paths[Saída de Origem OLE DB]"
+              endId="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente.Inputs[Entrada de Destino OLE DB]"
               name="Saída de Origem OLE DB"
-              startId="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB]" />
+              startId="Package\OrderReview_to_STAGE\Origem-Order_Review.Outputs[Saída de Origem OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -512,7 +512,7 @@
       DTS:From="Package\Truncar_Tabela_OrederReview"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restrição"
-      DTS:To="Package\OrderReview_ERP_to_STAGE" />
+      DTS:To="Package\OrderReview_to_STAGE" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
@@ -527,8 +527,8 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="231,42"
-          Id="Package\OrderReview_ERP_to_STAGE"
+          Size="202,42"
+          Id="Package\OrderReview_to_STAGE"
           TopLeft="189,172" />
         <NodeLayout
           Size="233,42"
@@ -540,9 +540,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-16,76"
+              EndConnector="-30.5,76"
               Start="0,0"
-              End="-16,68.5">
+              End="-30.5,68.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -553,13 +553,13 @@
                     Point2="0,38"
                     Point3="-4,38" />
                   <mssgle:LineSegment
-                    End="-12,38" />
+                    End="-26.5,38" />
                   <mssgle:CubicBezierSegment
-                    Point1="-12,38"
-                    Point2="-16,38"
-                    Point3="-16,42" />
+                    Point1="-26.5,38"
+                    Point2="-30.5,38"
+                    Point3="-30.5,42" />
                   <mssgle:LineSegment
-                    End="-16,68.5" />
+                    End="-30.5,68.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -572,20 +572,20 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\OrderReview_ERP_to_STAGE">
+    design-time-name="Package\OrderReview_to_STAGE">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="190,42"
-          Id="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente"
+          Id="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente"
           TopLeft="274,162" />
         <NodeLayout
           Size="189,42"
-          Id="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review"
+          Id="Package\OrderReview_to_STAGE\Origem-Order_Review"
           TopLeft="261,30" />
         <EdgeLayout
-          Id="Package\OrderReview_ERP_to_STAGE.Paths[Saída de Origem OLE DB]"
+          Id="Package\OrderReview_to_STAGE.Paths[Saída de Origem OLE DB]"
           TopLeft="355.5,72">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -622,7 +622,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\OrderReview_ERP_to_STAGE\Origem-Order_Review">
+    design-time-name="Package\OrderReview_to_STAGE\Origem-Order_Review">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -635,7 +635,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\OrderReview_ERP_to_STAGE\STG_AvaliacaoCliente">
+    design-time-name="Package\OrderReview_to_STAGE\STG_AvaliacaoCliente">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

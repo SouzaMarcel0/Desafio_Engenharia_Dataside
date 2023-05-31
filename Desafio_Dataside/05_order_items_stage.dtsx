@@ -11,8 +11,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="05_order_items_stage"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{5F39098A-955D-49D0-90FC-20CE1E387CE4}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{9DB88C5E-54E3-450E-A601-36D785B1A00F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -44,13 +44,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Tarefa Fluxo de Dados"
+      DTS:refId="Package\Carga_Itens_Pedido_Stage"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarefa Fluxo de Dados"
       DTS:DTSID="{05987C09-8508-4754-8953-4E15141A4D09}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarefa Fluxo de Dados"
+      DTS:ObjectName="Carga_Itens_Pedido_Stage"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -58,7 +58,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems"
+              refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
               description="Origem OLE DB"
@@ -107,7 +107,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Connections[OleDbConnection]"
+                  refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
                   connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -115,167 +115,167 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB]"
+                  refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB]"
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_id]"
                       name="order_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_item_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_item_id]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_item_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_item_id]"
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_item_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_item_id]"
                       name="order_item_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[product_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[product_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[product_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[product_id]"
                       name="product_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[seller_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[seller_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[seller_id]"
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[seller_id]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[seller_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[seller_id]"
                       name="seller_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[shipping_limit_date]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[shipping_limit_date]"
                       dataType="dbTimeStamp2"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[shipping_limit_date]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[shipping_limit_date]"
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[shipping_limit_date]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[shipping_limit_date]"
                       name="shipping_limit_date"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[price]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[price]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[price]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[price]"
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[price]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[price]"
                       name="price"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[freight_value]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[freight_value]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[freight_value]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[freight_value]"
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[freight_value]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[freight_value]"
                       name="freight_value"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
                       dataType="wstr"
                       length="50"
                       name="order_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_item_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[order_item_id]"
                       dataType="ui1"
                       name="order_item_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[product_id]"
                       dataType="wstr"
                       length="50"
                       name="product_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[seller_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[seller_id]"
                       dataType="wstr"
                       length="50"
                       name="seller_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[shipping_limit_date]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[shipping_limit_date]"
                       dataType="dbTimeStamp2"
                       name="shipping_limit_date"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[price]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[price]"
                       dataType="r8"
                       name="price" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[freight_value]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].ExternalColumns[freight_value]"
                       dataType="r8"
                       name="freight_value" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB]"
+                  refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB]"
                   isErrorOut="true"
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
                       name="order_id" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_item_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_item_id]"
                       dataType="ui1"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_item_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[order_item_id]"
                       name="order_item_id" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[product_id]"
                       name="product_id" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[seller_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[seller_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[seller_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[seller_id]"
                       name="seller_id" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[shipping_limit_date]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[shipping_limit_date]"
                       dataType="dbTimeStamp2"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[shipping_limit_date]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[shipping_limit_date]"
                       name="shipping_limit_date"
                       scale="7" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[price]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[price]"
                       dataType="r8"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[price]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[price]"
                       name="price" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[freight_value]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[freight_value]"
                       dataType="r8"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[freight_value]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[freight_value]"
                       name="freight_value" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -284,7 +284,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido"
+              refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
               description="Destino OLE DB"
@@ -341,7 +341,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Connections[OleDbConnection]"
+                  refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.STAGE_AREA]"
                   connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.STAGE_AREA]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -349,91 +349,91 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB]"
+                  refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB]"
                   errorOrTruncationOperation="Inserir"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de Destino OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[order_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[order_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="order_id"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_id]" />
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_id]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[order_item_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[order_item_id]"
                       cachedDataType="ui1"
                       cachedName="order_item_id"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_item_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_item_id]" />
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_item_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[order_item_id]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[product_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[product_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="product_id"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[product_id]" />
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[product_id]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[seller_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[seller_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="seller_id"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[seller_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[seller_id]" />
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[seller_id]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[seller_id]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[shipping_limit_date]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[shipping_limit_date]"
                       cachedDataType="dbTimeStamp2"
                       cachedName="shipping_limit_date"
                       cachedScale="7"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[shipping_limit_date]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[shipping_limit_date]" />
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[shipping_limit_date]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[shipping_limit_date]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[price]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[price]"
                       cachedDataType="r8"
                       cachedName="price"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[price]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[price]" />
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[price]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[price]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[freight_value]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].Columns[freight_value]"
                       cachedDataType="r8"
                       cachedName="freight_value"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[freight_value]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[freight_value]" />
+                      externalMetadataColumnId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[freight_value]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB].Columns[freight_value]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
                       dataType="wstr"
                       length="50"
                       name="order_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_item_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_item_id]"
                       dataType="ui1"
                       name="order_item_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[product_id]"
                       dataType="wstr"
                       length="50"
                       name="product_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[seller_id]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[seller_id]"
                       dataType="wstr"
                       length="50"
                       name="seller_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[shipping_limit_date]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[shipping_limit_date]"
                       dataType="dbTimeStamp2"
                       name="shipping_limit_date"
                       scale="7" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[price]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[price]"
                       dataType="r8"
                       name="price" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[freight_value]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB].ExternalColumns[freight_value]"
                       dataType="r8"
                       name="freight_value" />
                   </externalMetadataColumns>
@@ -441,22 +441,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB]"
+                  refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Saída de Erro de Destino OLE DB"
-                  synchronousInputId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB]">
+                  synchronousInputId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -467,10 +467,10 @@
           </components>
           <paths>
             <path
-              refId="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
-              endId="Package\Tarefa Fluxo de Dados\STG_ItensPedido.Inputs[Entrada de Destino OLE DB]"
+              refId="Package\Carga_Itens_Pedido_Stage.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido.Inputs[Entrada de Destino OLE DB]"
               name="Saída de Origem OLE DB"
-              startId="Package\Tarefa Fluxo de Dados\Origem_OrderItems.Outputs[Saída de Origem OLE DB]" />
+              startId="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems.Outputs[Saída de Origem OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -502,7 +502,7 @@
       DTS:From="Package\Truncar_Tabela_STG_ItensPedido"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restrição"
-      DTS:To="Package\Tarefa Fluxo de Dados" />
+      DTS:To="Package\Carga_Itens_Pedido_Stage" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
@@ -517,8 +517,8 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="191,42"
-          Id="Package\Tarefa Fluxo de Dados"
+          Size="214,42"
+          Id="Package\Carga_Itens_Pedido_Stage"
           TopLeft="179,176" />
         <NodeLayout
           Size="250,42"
@@ -530,9 +530,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-21.5,34"
+              EndConnector="-10,34"
               Start="0,0"
-              End="-21.5,26.5">
+              End="-10,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -543,13 +543,13 @@
                     Point2="0,17"
                     Point3="-4,17" />
                   <mssgle:LineSegment
-                    End="-17.5,17" />
+                    End="-6,17" />
                   <mssgle:CubicBezierSegment
-                    Point1="-17.5,17"
-                    Point2="-21.5,17"
-                    Point3="-21.5,21" />
+                    Point1="-6,17"
+                    Point2="-10,17"
+                    Point3="-10,21" />
                   <mssgle:LineSegment
-                    End="-21.5,26.5" />
+                    End="-10,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -562,20 +562,20 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Tarefa Fluxo de Dados">
+    design-time-name="Package\Carga_Itens_Pedido_Stage">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176,42"
-          Id="Package\Tarefa Fluxo de Dados\Origem_OrderItems"
-          TopLeft="221,70" />
-        <NodeLayout
           Size="166,42"
-          Id="Package\Tarefa Fluxo de Dados\STG_ItensPedido"
+          Id="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido"
           TopLeft="232,217" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems"
+          TopLeft="221,70" />
         <EdgeLayout
-          Id="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          Id="Package\Carga_Itens_Pedido_Stage.Paths[Saída de Origem OLE DB]"
           TopLeft="312,112">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -600,7 +600,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\Origem_OrderItems">
+    design-time-name="Package\Carga_Itens_Pedido_Stage\Origem_OrderItems">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -613,7 +613,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\STG_ItensPedido">
+    design-time-name="Package\Carga_Itens_Pedido_Stage\STG_ItensPedido">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

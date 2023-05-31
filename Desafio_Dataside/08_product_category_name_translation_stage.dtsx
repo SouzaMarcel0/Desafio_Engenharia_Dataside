@@ -11,20 +11,20 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="08_product_category_name_translation_stage"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{7D5ABB94-BDE9-4BD4-927F-5A58DF18D862}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{74CAF532-8E16-4029-B448-D35F0AF18A38}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Tarefa Fluxo de Dados"
+      DTS:refId="Package\Carga_Nome_Traducao_Categoria"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarefa Fluxo de Dados"
       DTS:DTSID="{E352CA7F-0D01-4B9F-938C-834A6E75AD41}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarefa Fluxo de Dados"
+      DTS:ObjectName="Carga_Nome_Traducao_Categoria"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,7 +32,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation"
+              refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
               description="Origem OLE DB"
@@ -81,7 +81,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Connections[OleDbConnection]"
+                  refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Connections[OleDbConnection]"
                   connectionManagerID="{55F95565-A04F-4B3F-B7A3-BA25E4829265}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ERP]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -89,71 +89,71 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB]"
+                  refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB]"
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[name_category]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[name_category]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[name_category]"
+                      externalMetadataColumnId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[name_category]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[name_category]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[name_category]"
                       name="name_category"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_categoria]"
+                      externalMetadataColumnId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_categoria]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]"
                       name="nome_categoria"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[name_category]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[name_category]"
                       dataType="wstr"
                       length="50"
                       name="name_category" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_categoria]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_categoria]"
                       dataType="wstr"
                       length="50"
                       name="nome_categoria" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB]"
+                  refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB]"
                   isErrorOut="true"
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[name_category]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[name_category]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[name_category]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[name_category]"
                       name="name_category" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_categoria]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_categoria]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_categoria]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_categoria]"
                       name="nome_categoria" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -162,7 +162,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria"
+              refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
               description="Destino OLE DB"
@@ -219,7 +219,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Connections[OleDbConnection]"
+                  refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Connections[OleDbConnection]"
                   connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
                   connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -227,36 +227,36 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB]"
+                  refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB]"
                   errorOrTruncationOperation="Inserir"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de Destino OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].Columns[name_category]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].Columns[name_category]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="name_category"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[name_category]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[name_category]" />
+                      externalMetadataColumnId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[name_category]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[name_category]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].Columns[nome_categoria]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].Columns[nome_categoria]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="nome_categoria"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_categoria]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]" />
+                      externalMetadataColumnId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_categoria]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[name_category]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[name_category]"
                       dataType="wstr"
                       length="50"
                       name="name_category" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_categoria]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_categoria]"
                       dataType="wstr"
                       length="50"
                       name="nome_categoria" />
@@ -265,22 +265,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB]"
+                  refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Saída de Erro de Destino OLE DB"
-                  synchronousInputId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB]">
+                  synchronousInputId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -291,22 +291,22 @@
           </components>
           <paths>
             <path
-              refId="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
-              endId="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB]"
+              refId="Package\Carga_Nome_Traducao_Categoria.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria.Inputs[Entrada de Destino OLE DB]"
               name="Saída de Origem OLE DB"
-              startId="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB]" />
+              startId="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation.Outputs[Saída de Origem OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Truncar_Tabela_Customer"
+      DTS:refId="Package\Truncar_Tabela_Traducao"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarefa Executar SQL"
       DTS:DTSID="{fee37d05-c5c1-4257-94eb-7cf41f54753f}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Truncar_Tabela_Customer"
+      DTS:ObjectName="Truncar_Tabela_Traducao"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -323,10 +323,10 @@
       DTS:refId="Package.PrecedenceConstraints[Restrição]"
       DTS:CreationName=""
       DTS:DTSID="{ED38773F-2FBC-4391-8EA2-F5CF611B277D}"
-      DTS:From="Package\Truncar_Tabela_Customer"
+      DTS:From="Package\Truncar_Tabela_Traducao"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restrição"
-      DTS:To="Package\Tarefa Fluxo de Dados" />
+      DTS:To="Package\Carga_Nome_Traducao_Categoria" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
@@ -341,27 +341,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="191,42"
-          Id="Package\Tarefa Fluxo de Dados"
+          Size="251,42"
+          Id="Package\Carga_Nome_Traducao_Categoria"
           TopLeft="193,141" />
         <NodeLayout
-          Size="210,42"
-          Id="Package\Truncar_Tabela_Customer"
+          Size="209,42"
+          Id="Package\Truncar_Tabela_Traducao"
           TopLeft="189,30" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restrição]"
-          TopLeft="291.25,72">
+          TopLeft="293.5,72">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,69"
+              EndConnector="25,69"
               Start="0,0"
-              End="0,61.5">
+              End="25,61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.5" />
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="21,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21,34.5"
+                    Point2="25,34.5"
+                    Point3="25,38.5" />
+                  <mssgle:LineSegment
+                    End="25,61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -374,20 +386,20 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Tarefa Fluxo de Dados">
+    design-time-name="Package\Carga_Nome_Traducao_Categoria">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="306,42"
-          Id="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation"
-          TopLeft="146,49" />
-        <NodeLayout
           Size="231,42"
-          Id="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria"
+          Id="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria"
           TopLeft="193,175" />
+        <NodeLayout
+          Size="306,42"
+          Id="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation"
+          TopLeft="146,49" />
         <EdgeLayout
-          Id="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          Id="Package\Carga_Nome_Traducao_Categoria.Paths[Saída de Origem OLE DB]"
           TopLeft="299,91">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -424,7 +436,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\Origem_Product_Category_Name_Translation">
+    design-time-name="Package\Carga_Nome_Traducao_Categoria\Origem_Product_Category_Name_Translation">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -437,7 +449,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\STG_TraducaoNomeCategoria">
+    design-time-name="Package\Carga_Nome_Traducao_Categoria\STG_TraducaoNomeCategoria">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

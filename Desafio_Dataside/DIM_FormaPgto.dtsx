@@ -1,0 +1,558 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/31/2023 2:54:00 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-PCFB7AV"
+  DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
+  DTS:DTSID="{C3C10D9F-DB4A-4001-9055-7B3BA00F6A51}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{BB27547E-2F3B-45C2-8DF3-8D8CDBBF3820}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga_Dimensao_FormaPgto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarefa Fluxo de Dados"
+      DTS:DTSID="{565EAF2B-928C-41D5-9568-A4553407DCF8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_Dimensao_FormaPgto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino OLE DB"
+              name="DIM_FormaPgto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">[DIM_FormaPgto]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB]"
+                  errorOrTruncationOperation="Inserir"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de Destino OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[id_pgto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_pgto"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_pgto]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[id_pgto]" />
+                    <inputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[nome_pgto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome_pgto"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_pgto]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[nome_pgto]" />
+                    <inputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[qtde_parcelas]"
+                      cachedDataType="ui1"
+                      cachedName="qtde_parcelas"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[qtde_parcelas]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[qtde_parcelas]" />
+                    <inputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[valor_pgto]"
+                      cachedDataType="r8"
+                      cachedName="valor_pgto"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_pgto]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pgto]" />
+                    <inputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[sequencia_pgto]"
+                      cachedDataType="ui1"
+                      cachedName="sequencia_pgto"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[sequencia_pgto]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[sequencia_pgto]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_Pgto]"
+                      dataType="i4"
+                      name="SK_Pgto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_pgto]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_pgto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_pgto]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome_pgto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[qtde_parcelas]"
+                      dataType="ui1"
+                      name="qtde_parcelas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_pgto]"
+                      dataType="r8"
+                      name="valor_pgto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[sequencia_pgto]"
+                      dataType="ui1"
+                      name="sequencia_pgto" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Outputs[Saída de Erro de Destino OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Destino OLE DB"
+                  synchronousInputId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+              description="Origem OLE DB"
+              name="Origem_FormaPgto"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">[dbo].[STG_FormasPagamento]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [order_id] as id_pgto
+      ,[payment_sequential] as sequencia_pgto
+      ,[payment_type] as nome_pgto
+      ,[payment_installments] as qtde_parcelas
+      ,[payment_value] as valor_pgto
+  FROM [STAGE_AREA].[dbo].[STG_FormasPagamento]</property>
+                <property
+                  dataType="System.String"
+                  description="A variável que contém o comando SQL a ser executado."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Connections[OleDbConnection]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB]"
+                  name="Saída de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[id_pgto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_pgto]"
+                      length="50"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[id_pgto]"
+                      name="id_pgto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[nome_pgto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_pgto]"
+                      length="50"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[nome_pgto]"
+                      name="nome_pgto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[qtde_parcelas]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[qtde_parcelas]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[qtde_parcelas]"
+                      name="qtde_parcelas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pgto]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_pgto]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pgto]"
+                      name="valor_pgto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[sequencia_pgto]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[sequencia_pgto]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[sequencia_pgto]"
+                      name="sequencia_pgto"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_pgto]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_pgto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_pgto]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome_pgto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[qtde_parcelas]"
+                      dataType="ui1"
+                      name="qtde_parcelas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_pgto]"
+                      dataType="r8"
+                      name="valor_pgto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[sequencia_pgto]"
+                      dataType="ui1"
+                      name="sequencia_pgto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_pgto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_pgto]"
+                      name="id_pgto" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[sequencia_pgto]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[sequencia_pgto]"
+                      name="sequencia_pgto" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_pgto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_pgto]"
+                      name="nome_pgto" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[qtde_parcelas]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[qtde_parcelas]"
+                      name="qtde_parcelas" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_pgto]"
+                      dataType="r8"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_pgto]"
+                      name="valor_pgto" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_Dimensao_FormaPgto.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB]"
+              name="Saída de Origem OLE DB"
+              startId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncar_FormaPgto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{D2F42AFB-DE9C-4CB3-935E-CC6C60DB9ABF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncar_FormaPgto"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DIM_FormaPgto" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restrição]"
+      DTS:CreationName=""
+      DTS:DTSID="{2DBA4162-FA15-49B1-949E-9BA16447FC5E}"
+      DTS:From="Package\Truncar_FormaPgto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restrição"
+      DTS:To="Package\Carga_Dimensao_FormaPgto" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Carga_Dimensao_FormaPgto"
+          TopLeft="222,168" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Truncar_FormaPgto"
+          TopLeft="231,57" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restrição]"
+          TopLeft="319.5,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15,69"
+              Start="0,0"
+              End="15,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="11,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11,34.5"
+                    Point2="15,34.5"
+                    Point3="15,38.5" />
+                  <mssgle:LineSegment
+                    End="15,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga_Dimensao_FormaPgto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto"
+          TopLeft="210,75" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto"
+          TopLeft="209,238" />
+        <EdgeLayout
+          Id="Package\Carga_Dimensao_FormaPgto.Paths[Saída de Origem OLE DB]"
+          TopLeft="298,117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,121"
+              Start="0,0"
+              End="-9,113.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.5"
+                    Point2="0,60.5"
+                    Point3="-4,60.5" />
+                  <mssgle:LineSegment
+                    End="-5,60.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,60.5"
+                    Point2="-9,60.5"
+                    Point3="-9,64.5" />
+                  <mssgle:LineSegment
+                    End="-9,113.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
