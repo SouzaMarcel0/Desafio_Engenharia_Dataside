@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
   DTS:DTSID="{DF5C4CB8-CCEC-48EA-BBE5-189C26A54012}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{A54E2945-3FFB-4198-8EFA-1D6EE9D481BE}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{B5630A9F-73FC-4AC2-BDC6-7A1BA587F00D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -141,7 +141,7 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
@@ -272,7 +272,7 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [geolocation_zip_code_prefix] as cod_postal
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [geolocation_zip_code_prefix] as cod_postal
       ,[geolocation_lat] as latitude
       ,[geolocation_lng] as longitude
       ,[geolocation_city] as cidade
@@ -453,6 +453,23 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Criando_Tabela_Temporaria"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F58A978F-482A-462F-AD7B-F6122CFFFE18}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Criando_Tabela_Temporaria"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{94B00B37-3947-463E-95F2-07E221DF8165}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="ALTER TABLE geolocation &#xA;&#xA;ADD new_geolocation_lat DECIMAL(18), new_geolocation_lng DECIMAL(18);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Tratando_notacao_cientifica"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarefa Executar SQL"
@@ -461,13 +478,13 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Tratando_notacao_cientifica"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{94B00B37-3947-463E-95F2-07E221DF8165}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="ALTER TABLE STG_Localizacao&#xA;&#xA;ADD new_geolocation_lat DECIMAL(18), new_geolocation_lng DECIMAL(18);&#xA;&#xA;UPDATE STG_Localizacao&#xA;&#xA;SET &#xA;&#xA;new_geolocation_lat = CONVERT(DECIMAL(18), geolocation_lat), &#xA;&#xA;new_geolocation_lng = CONVERT(DECIMAL(18), geolocation_lng);&#xA;&#xA; &#xA;&#xA;ALTER TABLE STG_Localizacao DROP COLUMN geolocation_lat, geolocation_lng; &#xA;EXEC sp_rename 'geolocation.new_geolocation_lat', 'geolocation_lat', 'COLUMN'; &#xA;EXEC sp_rename 'geolocation.new_geolocation_lng', 'geolocation_lng', 'COLUMN';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE &#xA;geolocation SET new_geolocation_lat = CONVERT(DECIMAL(18), &#xA;geolocation_lat), new_geolocation_lng = CONVERT(DECIMAL(18), geolocation_lng); &#xA;&#xA;ALTER TABLE geolocation DROP COLUMN geolocation_lat, geolocation_lng; &#xA;EXEC sp_rename 'geolocation.new_geolocation_lat', 'geolocation_lat', 'COLUMN'; &#xA;EXEC sp_rename 'geolocation.new_geolocation_lng', 'geolocation_lng', 'COLUMN';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -489,30 +506,126 @@
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6557C6C1-0024-48C8-A2FE-A9A48ABBFDE8}"
+      DTS:From="Package\Truncar_Dimensao_Localizacao"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Criando_Tabela_Temporaria" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5B0FD4A9-8D25-47C7-B03B-43B73D80A96D}"
+      DTS:From="Package\Criando_Tabela_Temporaria"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Tratando_notacao_cientifica" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3368AC3A-F8FC-4914-B9E7-5CB16418A2C5}"
+      DTS:From="Package\Tratando_notacao_cientifica"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Carga_Dimensao_Localizacao" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
-<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
-<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="229,42"
+          Size="228.8,41.6"
           Id="Package\Carga_Dimensao_Localizacao"
-          TopLeft="169,232" />
+          TopLeft="321.857143182536,321.470588156869" />
         <NodeLayout
-          Size="217,42"
+          Size="216.8,41.6"
           Id="Package\Tratando_notacao_cientifica"
-          TopLeft="170,159" />
+          TopLeft="325.714286045761,221.705882297977" />
         <NodeLayout
-          Size="237,42"
+          Size="236.8,41.6"
           Id="Package\Truncar_Dimensao_Localizacao"
-          TopLeft="159,87" />
+          TopLeft="318.285714624792,42.6470588624065" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Criando_Tabela_Temporaria"
+          TopLeft="330.000000702483,136.117646939511" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="436.142857663638,84.2470588624065">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.8705880771047"
+              Start="0,0"
+              End="0,44.3705880771047">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.3705880771047" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="434.857143374122,177.717646939511">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.9882353584659"
+              Start="0,0"
+              End="0,36.4882353584659">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.4882353584659" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="435.185714614148,263.305882297977">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.1647058588925"
+              Start="0,0"
+              End="0,50.6647058588925">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.6647058588925" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -522,43 +635,31 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
+          Size="156.8,41.6"
           Id="Package\Carga_Dimensao_Localizacao\DIM_Localizacao"
-          TopLeft="202,271" />
+          TopLeft="233.428571495475,277.117647053461" />
         <NodeLayout
-          Size="161,42"
+          Size="160.8,41.6"
           Id="Package\Carga_Dimensao_Localizacao\Coluna Derivada"
-          TopLeft="187,174" />
+          TopLeft="234.857142959018,176.294117645048" />
         <NodeLayout
-          Size="179,42"
+          Size="179.2,41.6"
           Id="Package\Carga_Dimensao_Localizacao\Origem_Localizacao"
-          TopLeft="231,63" />
+          TopLeft="225.28571427355,62.2352941183173" />
         <EdgeLayout
           Id="Package\Carga_Dimensao_Localizacao.Paths[Saída de Origem OLE DB]"
-          TopLeft="320.5,105">
+          TopLeft="315.071428616284,103.835294118317">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-53,69"
+              EndConnector="0,72.4588235267306"
               Start="0,0"
-              End="-53,61.5">
+              End="0,64.9588235267306">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.5"
-                    Point2="0,34.5"
-                    Point3="-4,34.5" />
-                  <mssgle:LineSegment
-                    End="-49,34.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-49,34.5"
-                    Point2="-53,34.5"
-                    Point3="-53,38.5" />
-                  <mssgle:LineSegment
-                    End="-53,61.5" />
+                    End="0,64.9588235267306" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -569,30 +670,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga_Dimensao_Localizacao.Paths[Saída de Coluna Derivada]"
-          TopLeft="267.5,216">
+          TopLeft="313.542857227246,217.894117645048">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="16,55"
+              EndConnector="0,59.2235294084133"
               Start="0,0"
-              End="16,47.5">
+              End="0,51.7235294084133">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.5"
-                    Point2="0,27.5"
-                    Point3="4,27.5" />
-                  <mssgle:LineSegment
-                    End="12,27.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12,27.5"
-                    Point2="16,27.5"
-                    Point3="16,31.5" />
-                  <mssgle:LineSegment
-                    End="16,47.5" />
+                    End="0,51.7235294084133" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
