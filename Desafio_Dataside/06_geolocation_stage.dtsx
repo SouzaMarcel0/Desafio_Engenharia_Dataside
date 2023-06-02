@@ -11,8 +11,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{9446B618-D5B3-4907-98B6-DF5026D924B0}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{7C194929-1A94-4BBA-A54E-A7BB4B25835B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -108,8 +108,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Localizacao_Stage\OrigemGeolocation.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
+                  connectionManagerID="{55F95565-A04F-4B3F-B7A3-BA25E4829265}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ERP]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
                   name="OleDbConnection" />
               </connections>
@@ -300,8 +300,8 @@
               <connections>
                 <connection
                   refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.STAGE_AREA]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.STAGE_AREA]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
                   name="OleDbConnection" />
               </connections>
@@ -320,18 +320,6 @@
                       externalMetadataColumnId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_zip_code_prefix]"
                       lineageId="Package\Carga_Localizacao_Stage\OrigemGeolocation.Outputs[Saída de Origem OLE DB].Columns[geolocation_zip_code_prefix]" />
                     <inputColumn
-                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].Columns[geolocation_lat]"
-                      cachedDataType="r8"
-                      cachedName="geolocation_lat"
-                      externalMetadataColumnId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lat]"
-                      lineageId="Package\Carga_Localizacao_Stage\OrigemGeolocation.Outputs[Saída de Origem OLE DB].Columns[geolocation_lat]" />
-                    <inputColumn
-                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].Columns[geolocation_lng]"
-                      cachedDataType="r8"
-                      cachedName="geolocation_lng"
-                      externalMetadataColumnId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lng]"
-                      lineageId="Package\Carga_Localizacao_Stage\OrigemGeolocation.Outputs[Saída de Origem OLE DB].Columns[geolocation_lng]" />
-                    <inputColumn
                       refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].Columns[geolocation_city]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -345,6 +333,18 @@
                       cachedName="geolocation_state"
                       externalMetadataColumnId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_state]"
                       lineageId="Package\Carga_Localizacao_Stage\OrigemGeolocation.Outputs[Saída de Origem OLE DB].Columns[geolocation_state]" />
+                    <inputColumn
+                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].Columns[geolocation_lat]"
+                      cachedDataType="r8"
+                      cachedName="geolocation_lat"
+                      externalMetadataColumnId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lat]"
+                      lineageId="Package\Carga_Localizacao_Stage\OrigemGeolocation.Outputs[Saída de Origem OLE DB].Columns[geolocation_lat]" />
+                    <inputColumn
+                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].Columns[geolocation_lng]"
+                      cachedDataType="r8"
+                      cachedName="geolocation_lng"
+                      externalMetadataColumnId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lng]"
+                      lineageId="Package\Carga_Localizacao_Stage\OrigemGeolocation.Outputs[Saída de Origem OLE DB].Columns[geolocation_lng]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -352,14 +352,6 @@
                       refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_zip_code_prefix]"
                       dataType="i4"
                       name="geolocation_zip_code_prefix" />
-                    <externalMetadataColumn
-                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lat]"
-                      dataType="r8"
-                      name="geolocation_lat" />
-                    <externalMetadataColumn
-                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lng]"
-                      dataType="r8"
-                      name="geolocation_lng" />
                     <externalMetadataColumn
                       refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_city]"
                       dataType="wstr"
@@ -370,6 +362,14 @@
                       dataType="wstr"
                       length="50"
                       name="geolocation_state" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lat]"
+                      dataType="r8"
+                      name="geolocation_lat" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Localizacao_Stage\STG_Localizacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[geolocation_lng]"
+                      dataType="r8"
+                      name="geolocation_lng" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -501,13 +501,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="174,42"
-          Id="Package\Carga_Localizacao_Stage\OrigemGeolocation"
-          TopLeft="280,65" />
-        <NodeLayout
           Size="166,42"
           Id="Package\Carga_Localizacao_Stage\STG_Localizacao"
           TopLeft="224,180" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Carga_Localizacao_Stage\OrigemGeolocation"
+          TopLeft="280,65" />
         <EdgeLayout
           Id="Package\Carga_Localizacao_Stage.Paths[Saída de Origem OLE DB]"
           TopLeft="367,107">

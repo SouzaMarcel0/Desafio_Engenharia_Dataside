@@ -11,8 +11,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{BB27547E-2F3B-45C2-8DF3-8D8CDBBF3820}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{55CB1E52-2902-4373-A842-1FC147D38F34}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -104,13 +104,6 @@
                   name="Entrada de Destino OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[id_pgto]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="id_pgto"
-                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_pgto]"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[id_pgto]" />
-                    <inputColumn
                       refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[nome_pgto]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -124,29 +117,32 @@
                       externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[qtde_parcelas]"
                       lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[qtde_parcelas]" />
                     <inputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[valor_pgto]"
-                      cachedDataType="r8"
-                      cachedName="valor_pgto"
-                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_pgto]"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pgto]" />
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[cod_pgto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="cod_pgto"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[cod_pgto]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[cod_pgto]" />
                     <inputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[sequencia_pgto]"
-                      cachedDataType="ui1"
-                      cachedName="sequencia_pgto"
-                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[sequencia_pgto]"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[sequencia_pgto]" />
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[valor_pago]"
+                      cachedDataType="r8"
+                      cachedName="valor_pago"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_pago]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pago]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_Pgto]"
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_FormaPgto]"
                       dataType="i4"
-                      name="SK_Pgto" />
+                      name="SK_FormaPgto" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_pgto]"
-                      dataType="wstr"
-                      length="50"
-                      name="id_pgto" />
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="cod_pgto" />
                     <externalMetadataColumn
                       refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_pgto]"
                       dataType="wstr"
@@ -157,13 +153,9 @@
                       dataType="ui1"
                       name="qtde_parcelas" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_pgto]"
+                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[valor_pago]"
                       dataType="r8"
-                      name="valor_pgto" />
-                    <externalMetadataColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[sequencia_pgto]"
-                      dataType="ui1"
-                      name="sequencia_pgto" />
+                      name="valor_pago" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -217,12 +209,12 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [order_id] as id_pgto
-      ,[payment_sequential] as sequencia_pgto
-      ,[payment_type] as nome_pgto
-      ,[payment_installments] as qtde_parcelas
-      ,[payment_value] as valor_pgto
-  FROM [STAGE_AREA].[dbo].[STG_FormasPagamento]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select
+cod_pgto,
+payment_type as nome_pgto,
+payment_installments as qtde_parcelas,
+payment_value as valor_pago
+from [dbo].[STG_FormaPgto]</property>
                 <property
                   dataType="System.String"
                   description="A variável que contém o comando SQL a ser executado."
@@ -259,16 +251,6 @@
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[id_pgto]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_pgto]"
-                      length="50"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[id_pgto]"
-                      name="id_pgto"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[nome_pgto]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
@@ -288,31 +270,28 @@
                       name="qtde_parcelas"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pgto]"
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[cod_pgto]"
+                      length="255"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[cod_pgto]"
+                      name="cod_pgto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pago]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_pgto]"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pgto]"
-                      name="valor_pgto"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[sequencia_pgto]"
-                      dataType="ui1"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[sequencia_pgto]"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[sequencia_pgto]"
-                      name="sequencia_pgto"
+                      externalMetadataColumnId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_pago]"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].Columns[valor_pago]"
+                      name="valor_pago"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_pgto]"
-                      dataType="wstr"
-                      length="50"
-                      name="id_pgto" />
                     <externalMetadataColumn
                       refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_pgto]"
                       dataType="wstr"
@@ -323,13 +302,15 @@
                       dataType="ui1"
                       name="qtde_parcelas" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_pgto]"
-                      dataType="r8"
-                      name="valor_pgto" />
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="cod_pgto" />
                     <externalMetadataColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[sequencia_pgto]"
-                      dataType="ui1"
-                      name="sequencia_pgto" />
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Origem OLE DB].ExternalColumns[valor_pago]"
+                      dataType="r8"
+                      name="valor_pago" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -338,16 +319,12 @@
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_pgto]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_pgto]"
-                      name="id_pgto" />
-                    <outputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[sequencia_pgto]"
-                      dataType="ui1"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[sequencia_pgto]"
-                      name="sequencia_pgto" />
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[cod_pgto]"
+                      name="cod_pgto" />
                     <outputColumn
                       refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_pgto]"
                       dataType="wstr"
@@ -360,10 +337,10 @@
                       lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[qtde_parcelas]"
                       name="qtde_parcelas" />
                     <outputColumn
-                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_pgto]"
+                      refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_pago]"
                       dataType="r8"
-                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_pgto]"
-                      name="valor_pgto" />
+                      lineageId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[valor_pago]"
+                      name="valor_pago" />
                     <outputColumn
                       refId="Package\Carga_Dimensao_FormaPgto\Origem_FormaPgto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -490,33 +467,33 @@
         <NodeLayout
           Size="160,42"
           Id="Package\Carga_Dimensao_FormaPgto\DIM_FormaPgto"
-          TopLeft="209,238" />
+          TopLeft="206,179" />
         <EdgeLayout
           Id="Package\Carga_Dimensao_FormaPgto.Paths[Saída de Origem OLE DB]"
           TopLeft="298,117">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9,121"
+              EndConnector="-12,62"
               Start="0,0"
-              End="-9,113.5">
+              End="-12,54.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.5" />
+                    End="0,27" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,56.5"
-                    Point2="0,60.5"
-                    Point3="-4,60.5" />
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
                   <mssgle:LineSegment
-                    End="-5,60.5" />
+                    End="-8,31" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5,60.5"
-                    Point2="-9,60.5"
-                    Point3="-9,64.5" />
+                    Point1="-8,31"
+                    Point2="-12,31"
+                    Point3="-12,35" />
                   <mssgle:LineSegment
-                    End="-9,113.5" />
+                    End="-12,54.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
