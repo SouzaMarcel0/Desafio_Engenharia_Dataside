@@ -1,0 +1,1788 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/31/2023 3:39:26 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-PCFB7AV"
+  DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
+  DTS:DTSID="{EAB4901D-77F4-4295-8239-6AF581C6B5CF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{DD5277A9-7066-4A61-82D5-834BDD904CE6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga_DimensaoProduto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarefa Fluxo de Dados"
+      DTS:DTSID="{C44B66FB-10CE-4D22-84FC-BE6736536C0E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_DimensaoProduto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Dimensão de Alteração Lenta;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;3"
+              description="Atualiza uma dimensão de data warehouse do SQL Server Analysis Services. Atualize registros da dimensão que já estejam presentes e insira os registros que não estão. Por exemplo, atualize a tabela DimProduct do banco de dados OLAP AdventureWorksDW com dados da tabela Products do banco de dados OLTP AdventureWorks."
+              name="Carga_Dim_Produto"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica a instrução SELECT usada para criar um conjunto de linhas de esquema."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [altura_prod_cm], [comprimento_descricao], [comprimento_nome], [comprimento_prod_cm], [id_produto], [largura_prod_cm], [nome_categoria], [peso_produto_g], [preco_prod],[Data_Inicio],[Data_Fim] FROM [dbo].[DIM_Produto]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a cláusula WHERE na instrução SELECT que seleciona a linha atual entre as linhas com chaves de negócios idênticas."
+                  name="CurrentRowWhere">[Data_Inicio] IS NOT NULL AND [Data_Fim] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se as atualizações de atributo de histórico são direcionadas para a saída de transformação para atualizações de atributo de alteração."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se a transformação falhará quando as colunas com atributos fixos contiverem alterações."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome da coluna para o membro inferido."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se as atualizações de membro inferido são detectadas."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se a transformação falhará quando uma pesquisa de registro existente falhar."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica que todas as linhas na entrada são novas ou a transformação detecta o tipo de alteração."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Connections[LookupConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="Define a conexão a ser usada para pesquisas na tabela de dimensão"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]"
+                  name="Entrada de Dimensão de Alteração Lenta">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[altura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="altura_prod_cm"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[altura_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[altura_prod_cm]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[comprimento_descricao]"
+                      cachedDataType="i2"
+                      cachedName="comprimento_descricao"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[comprimento_descricao]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_descricao]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[comprimento_nome]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_nome"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[comprimento_nome]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_nome]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[comprimento_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_prod_cm"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[comprimento_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_prod_cm]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[id_produto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_produto"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[id_produto]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[id_produto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[largura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="largura_prod_cm"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[largura_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[largura_prod_cm]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[nome_categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome_categoria"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[nome_categoria]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[peso_produto_g]"
+                      cachedDataType="i4"
+                      cachedName="peso_produto_g"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[peso_produto_g]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[peso_produto_g]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].Columns[preco_prod]"
+                      cachedDataType="r8"
+                      cachedName="preco_prod"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[preco_prod]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[preco_prod]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[altura_prod_cm]"
+                      dataType="ui1"
+                      name="altura_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[comprimento_descricao]"
+                      dataType="i2"
+                      name="comprimento_descricao" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[comprimento_nome]"
+                      dataType="ui1"
+                      name="comprimento_nome" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[comprimento_prod_cm]"
+                      dataType="ui1"
+                      name="comprimento_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[id_produto]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[largura_prod_cm]"
+                      dataType="ui1"
+                      name="largura_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[nome_categoria]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome_categoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[peso_produto_g]"
+                      dataType="i4"
+                      name="peso_produto_g" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[preco_prod]"
+                      dataType="r8"
+                      name="preco_prod" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Data_Inicio]"
+                      dataType="dbTimeStamp2"
+                      name="Data_Inicio"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta].ExternalColumns[Data_Fim]"
+                      dataType="dbTimeStamp2"
+                      name="Data_Fim"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Saída Inalterada]"
+                  description="Linhas inalteradas"
+                  exclusionGroup="1"
+                  name="Saída Inalterada"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Nova Saída]"
+                  description="Novas linhas"
+                  exclusionGroup="1"
+                  name="Nova Saída"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Saída de Atributo Fixo]"
+                  description="Linhas com alterações em colunas marcadas com FixedAttribute"
+                  exclusionGroup="1"
+                  name="Saída de Atributo Fixo"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Saída de Atualizações de Atributo de Alteração]"
+                  description="Essas linhas contêm novas informações para as alterações da coluna ChangingAttribute (Type 1)"
+                  exclusionGroup="1"
+                  name="Saída de Atualizações de Atributo de Alteração"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Saída de Inserções de Atributo de Histórico]"
+                  description="O resultado de alterações de HistoricalAttribute (Type 2) nessas novas linhas"
+                  exclusionGroup="2"
+                  name="Saída de Inserções de Atributo de Histórico"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Saída de Atualizações de Membro Inferido]"
+                  description="Informações para atualizar a linha de dimensão inicial sem preenchimento"
+                  exclusionGroup="1"
+                  name="Saída de Atualizações de Membro Inferido"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_DimensaoProduto\Coluna Derivada"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Coluna Derivada"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[Data_Fim]"
+                      dataType="dbTimeStamp2"
+                      description="Data_Fim"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[Data_Fim]"
+                      name="Data_Fim"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">(DT_DBTIMESTAMP2,7)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP2,7)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_DimensaoProduto\Coluna Derivada 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Coluna Derivada 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[Data_Inicio]"
+                      dataType="dbTimeStamp2"
+                      description="Data_Inicio"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[Data_Inicio]"
+                      name="Data_Inicio"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">(DT_DBTIMESTAMP2,7)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP2,7)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_DimensaoProduto\Comando OLE DB"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Comando OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;2"
+              description="Executa uma instrução SQL para cada linha em um fluxo de dados. Por exemplo, chame um procedimento armazenado 'new employee setup' para cada linha da tabela 'new employees'. Observação: a execução de uma instrução SQL para cada linha de um fluxo de dados grande pode demorar."
+              name="Comando OLE DB"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DIM_Produto] SET [Data_Fim] = ? WHERE [id_produto] = ? AND [Data_Fim] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_DimensaoProduto\Comando OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]"
+                  errorOrTruncationOperation="Execução de Comando"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de Comando OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].Columns[id_produto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_produto"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[id_produto]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].Columns[Data_Fim]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Data_Fim"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[Data_Fim]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp2"
+                      name="Param_0"
+                      scale="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">1073741889</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informações de parâmetro. Corresponde os valores de DBPARAMFLAGSENUM de OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Comando OLE DB.Outputs[Saída de Comando OLE DB]"
+                  exclusionGroup="1"
+                  name="Saída de Comando OLE DB"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Comando OLE DB"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Comando OLE DB.Outputs[Saída de Erro de Comando OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_DimensaoProduto\Inserir Destino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino OLE DB"
+              name="Inserir Destino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">[dbo].[DIM_Produto]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_DimensaoProduto\Inserir Destino.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB]"
+                  errorOrTruncationOperation="Inserir"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de Destino OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[id_produto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_produto"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_produto]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_produto]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[nome_categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome_categoria"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_categoria]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nome_categoria]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[comprimento_nome]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_nome"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[comprimento_nome]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_nome]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[comprimento_descricao]"
+                      cachedDataType="i2"
+                      cachedName="comprimento_descricao"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[comprimento_descricao]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_descricao]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[peso_produto_g]"
+                      cachedDataType="i4"
+                      cachedName="peso_produto_g"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[peso_produto_g]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[peso_produto_g]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[comprimento_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_prod_cm"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[comprimento_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_prod_cm]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[altura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="altura_prod_cm"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[altura_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[altura_prod_cm]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[largura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="largura_prod_cm"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[largura_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[largura_prod_cm]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[preco_prod]"
+                      cachedDataType="r8"
+                      cachedName="preco_prod"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[preco_prod]"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[preco_prod]" />
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].Columns[Data_Inicio]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Data_Inicio"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[Data_Inicio]"
+                      lineageId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada].Columns[Data_Inicio]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_Produto]"
+                      dataType="i4"
+                      name="SK_Produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[id_produto]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[nome_categoria]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome_categoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[comprimento_nome]"
+                      dataType="ui1"
+                      name="comprimento_nome" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[comprimento_descricao]"
+                      dataType="i2"
+                      name="comprimento_descricao" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[peso_produto_g]"
+                      dataType="i4"
+                      name="peso_produto_g" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[comprimento_prod_cm]"
+                      dataType="ui1"
+                      name="comprimento_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[altura_prod_cm]"
+                      dataType="ui1"
+                      name="altura_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[largura_prod_cm]"
+                      dataType="ui1"
+                      name="largura_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[preco_prod]"
+                      dataType="r8"
+                      name="preco_prod" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[Data_Inicio]"
+                      dataType="dbTimeStamp2"
+                      name="Data_Inicio"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB].ExternalColumns[Data_Fim]"
+                      dataType="dbTimeStamp2"
+                      name="Data_Fim"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Inserir Destino.Outputs[Saída de Erro de Destino OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Destino OLE DB"
+                  synchronousInputId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Inserir Destino.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Inserir Destino.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Inserir Destino.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_DimensaoProduto\Origem_Produto"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+              description="Origem OLE DB"
+              name="Origem_Produto"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        prd.product_id AS id_produto, prd.product_category_name AS nome_categoria, prd.product_name_lenght AS comprimento_nome, prd.product_description_lenght AS comprimento_descricao, 
+                         prd.product_weight_g AS peso_produto_g, prd.product_length_cm AS comprimento_prod_cm, prd.product_height_cm AS altura_prod_cm, prd.product_width_cm AS largura_prod_cm, itens_prd.price AS preco_prod
+FROM            STG_Produto AS prd LEFT OUTER JOIN
+                         STG_ItensPedido AS itens_prd ON prd.product_id = itens_prd.product_id</property>
+                <property
+                  dataType="System.String"
+                  description="A variável que contém o comando SQL a ser executado."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_DimensaoProduto\Origem_Produto.Connections[OleDbConnection]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB]"
+                  name="Saída de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[id_produto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_produto]"
+                      length="50"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[id_produto]"
+                      name="id_produto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_categoria]"
+                      length="50"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]"
+                      name="nome_categoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_nome]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[comprimento_nome]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_nome]"
+                      name="comprimento_nome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_descricao]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[comprimento_descricao]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_descricao]"
+                      name="comprimento_descricao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[peso_produto_g]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[peso_produto_g]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[peso_produto_g]"
+                      name="peso_produto_g"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_prod_cm]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[comprimento_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_prod_cm]"
+                      name="comprimento_prod_cm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[altura_prod_cm]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[altura_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[altura_prod_cm]"
+                      name="altura_prod_cm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[largura_prod_cm]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[largura_prod_cm]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[largura_prod_cm]"
+                      name="largura_prod_cm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[preco_prod]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[preco_prod]"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[preco_prod]"
+                      name="preco_prod"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[id_produto]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_produto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[nome_categoria]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome_categoria" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[comprimento_nome]"
+                      dataType="ui1"
+                      name="comprimento_nome" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[comprimento_descricao]"
+                      dataType="i2"
+                      name="comprimento_descricao" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[peso_produto_g]"
+                      dataType="i4"
+                      name="peso_produto_g" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[comprimento_prod_cm]"
+                      dataType="ui1"
+                      name="comprimento_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[altura_prod_cm]"
+                      dataType="ui1"
+                      name="altura_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[largura_prod_cm]"
+                      dataType="ui1"
+                      name="largura_prod_cm" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].ExternalColumns[preco_prod]"
+                      dataType="r8"
+                      name="preco_prod" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_produto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[id_produto]"
+                      name="id_produto" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_categoria]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[nome_categoria]"
+                      name="nome_categoria" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[comprimento_nome]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[comprimento_nome]"
+                      name="comprimento_nome" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[comprimento_descricao]"
+                      dataType="i2"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[comprimento_descricao]"
+                      name="comprimento_descricao" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[peso_produto_g]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[peso_produto_g]"
+                      name="peso_produto_g" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[comprimento_prod_cm]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[comprimento_prod_cm]"
+                      name="comprimento_prod_cm" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[altura_prod_cm]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[altura_prod_cm]"
+                      name="altura_prod_cm" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[largura_prod_cm]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[largura_prod_cm]"
+                      name="largura_prod_cm" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[preco_prod]"
+                      dataType="r8"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[preco_prod]"
+                      name="preco_prod" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_DimensaoProduto\Unir Tudo"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir Tudo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina linhas de vários fluxos de dados sem classificação. Por exemplo, adicione novamente as linhas a um fluxo de dados após a correção de erros. Se a classificação for importante, é recomendável usar a transformação Mesclagem."
+              name="Unir Tudo"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+                  name="Unir Tudo Entrada 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[id_produto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_produto"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[id_produto]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_produto]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[nome_categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome_categoria"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nome_categoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[comprimento_nome]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_nome"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_nome]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_nome]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[comprimento_descricao]"
+                      cachedDataType="i2"
+                      cachedName="comprimento_descricao"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_descricao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_descricao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[peso_produto_g]"
+                      cachedDataType="i4"
+                      cachedName="peso_produto_g"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[peso_produto_g]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[peso_produto_g]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[comprimento_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_prod_cm"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_prod_cm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_prod_cm]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[altura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="altura_prod_cm"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[altura_prod_cm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[altura_prod_cm]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[largura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="largura_prod_cm"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[largura_prod_cm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[largura_prod_cm]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[preco_prod]"
+                      cachedDataType="r8"
+                      cachedName="preco_prod"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[preco_prod]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[preco_prod]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[id_produto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_produto"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[id_produto]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_produto]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[nome_categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome_categoria"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[nome_categoria]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nome_categoria]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[comprimento_nome]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_nome"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_nome]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_nome]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[comprimento_descricao]"
+                      cachedDataType="i2"
+                      cachedName="comprimento_descricao"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_descricao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_descricao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[peso_produto_g]"
+                      cachedDataType="i4"
+                      cachedName="peso_produto_g"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[peso_produto_g]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[peso_produto_g]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[comprimento_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="comprimento_prod_cm"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[comprimento_prod_cm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_prod_cm]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[altura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="altura_prod_cm"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[altura_prod_cm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[altura_prod_cm]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[largura_prod_cm]"
+                      cachedDataType="ui1"
+                      cachedName="largura_prod_cm"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[largura_prod_cm]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[largura_prod_cm]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[preco_prod]"
+                      cachedDataType="r8"
+                      cachedName="preco_prod"
+                      lineageId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB].Columns[preco_prod]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[preco_prod]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1]"
+                  name="Unir Tudo Saída 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_produto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_produto]"
+                      name="id_produto" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nome_categoria]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nome_categoria]"
+                      name="nome_categoria" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_nome]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_nome]"
+                      name="comprimento_nome" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_descricao]"
+                      dataType="i2"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_descricao]"
+                      name="comprimento_descricao" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[peso_produto_g]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[peso_produto_g]"
+                      name="peso_produto_g" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_prod_cm]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[comprimento_prod_cm]"
+                      name="comprimento_prod_cm" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[altura_prod_cm]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[altura_prod_cm]"
+                      name="altura_prod_cm" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[largura_prod_cm]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[largura_prod_cm]"
+                      name="largura_prod_cm" />
+                    <outputColumn
+                      refId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[preco_prod]"
+                      dataType="r8"
+                      lineageId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[preco_prod]"
+                      name="preco_prod" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_DimensaoProduto.Paths[Nova Saída]"
+              endId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+              name="Nova Saída"
+              startId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Nova Saída]" />
+            <path
+              refId="Package\Carga_DimensaoProduto.Paths[Saída de Coluna Derivada]"
+              endId="Package\Carga_DimensaoProduto\Comando OLE DB.Inputs[Entrada de Comando OLE DB]"
+              name="Saída de Coluna Derivada"
+              startId="Package\Carga_DimensaoProduto\Coluna Derivada.Outputs[Saída de Coluna Derivada]" />
+            <path
+              refId="Package\Carga_DimensaoProduto.Paths[Saída de Coluna Derivada1]"
+              endId="Package\Carga_DimensaoProduto\Inserir Destino.Inputs[Entrada de Destino OLE DB]"
+              name="Saída de Coluna Derivada"
+              startId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Outputs[Saída de Coluna Derivada]" />
+            <path
+              refId="Package\Carga_DimensaoProduto.Paths[Saída de Comando OLE DB]"
+              endId="Package\Carga_DimensaoProduto\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+              name="Saída de Comando OLE DB"
+              startId="Package\Carga_DimensaoProduto\Comando OLE DB.Outputs[Saída de Comando OLE DB]" />
+            <path
+              refId="Package\Carga_DimensaoProduto.Paths[Saída de Inserções de Atributo de Histórico]"
+              endId="Package\Carga_DimensaoProduto\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+              name="Saída de Inserções de Atributo de Histórico"
+              startId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Outputs[Saída de Inserções de Atributo de Histórico]" />
+            <path
+              refId="Package\Carga_DimensaoProduto.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_DimensaoProduto\Carga_Dim_Produto.Inputs[Entrada de Dimensão de Alteração Lenta]"
+              name="Saída de Origem OLE DB"
+              startId="Package\Carga_DimensaoProduto\Origem_Produto.Outputs[Saída de Origem OLE DB]" />
+            <path
+              refId="Package\Carga_DimensaoProduto.Paths[Unir Tudo Saída 1]"
+              endId="Package\Carga_DimensaoProduto\Coluna Derivada 1.Inputs[Entrada de Coluna Derivada]"
+              name="Unir Tudo Saída 1"
+              startId="Package\Carga_DimensaoProduto\Unir Tudo.Outputs[Unir Tudo Saída 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Carga_DimensaoProduto"
+          TopLeft="169,96" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga_DimensaoProduto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Carga_DimensaoProduto\Origem_Produto"
+          TopLeft="156.5,5.5" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Carga_DimensaoProduto\Carga_Dim_Produto"
+          TopLeft="147,107.5" />
+        <EdgeLayout
+          Id="Package\Carga_DimensaoProduto.Paths[Saída de Origem OLE DB]"
+          TopLeft="236.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Carga_DimensaoProduto\Coluna Derivada"
+          TopLeft="14,209.5" />
+        <EdgeLayout
+          Id="Package\Carga_DimensaoProduto.Paths[Saída de Inserções de Atributo de Histórico]"
+          TopLeft="208,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-113.5,60"
+              Start="0,0"
+              End="-113.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3189368770764" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3189368770764"
+                    Point2="0,24.3189368770764"
+                    Point3="-4,24.3189368770764" />
+                  <mssgle:LineSegment
+                    End="-109.5,24.3189368770764" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.5,24.3189368770764"
+                    Point2="-113.5,24.3189368770764"
+                    Point3="-113.5,28.3189368770764" />
+                  <mssgle:LineSegment
+                    End="-113.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-152.7926953125,29.3189368770764,192.085390625,12.2490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga_DimensaoProduto\Comando OLE DB"
+          TopLeft="5.50000000000003,311.5" />
+        <EdgeLayout
+          Id="Package\Carga_DimensaoProduto.Paths[Saída de Coluna Derivada]"
+          TopLeft="92.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Carga_DimensaoProduto\Unir Tudo"
+          TopLeft="173,413.5" />
+        <EdgeLayout
+          Id="Package\Carga_DimensaoProduto.Paths[Nova Saída]"
+          TopLeft="265,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.66666666666663,264"
+              Start="0,0"
+              End="-8.66666666666663,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.411951167273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,127.411951167273"
+                    Point2="0,131.411951167273"
+                    Point3="-4,131.411951167273" />
+                  <mssgle:LineSegment
+                    End="-4.66666666666663,131.411951167273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.66666666666663,131.411951167273"
+                    Point2="-8.66666666666663,131.411951167273"
+                    Point3="-8.66666666666663,135.411951167273" />
+                  <mssgle:LineSegment
+                    End="-8.66666666666663,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-29.3266927083333,136.411951167273,49.98671875,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_DimensaoProduto.Paths[Saída de Comando OLE DB]"
+          TopLeft="90.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126.166666666667,60"
+              Start="0,0"
+              End="126.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.552099533437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.552099533437"
+                    Point2="0,35.552099533437"
+                    Point3="4,35.552099533437" />
+                  <mssgle:LineSegment
+                    End="122.166666666667,35.552099533437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="122.166666666667,35.552099533437"
+                    Point2="126.166666666667,35.552099533437"
+                    Point3="126.166666666667,39.552099533437" />
+                  <mssgle:LineSegment
+                    End="126.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Carga_DimensaoProduto\Coluna Derivada 1"
+          TopLeft="151.5,515.5" />
+        <EdgeLayout
+          Id="Package\Carga_DimensaoProduto.Paths[Unir Tudo Saída 1]"
+          TopLeft="236.5,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Carga_DimensaoProduto\Inserir Destino"
+          TopLeft="161.5,617.5" />
+        <EdgeLayout
+          Id="Package\Carga_DimensaoProduto.Paths[Saída de Coluna Derivada1]"
+          TopLeft="236.5,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_DimensaoProduto\Origem_Produto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_DimensaoProduto\Carga_Dim_Produto">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DIM_Produto]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[altura_prod_cm]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;altura_prod_cm&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[comprimento_descricao]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;comprimento_descricao&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[comprimento_nome]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;comprimento_nome&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[comprimento_prod_cm]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;comprimento_prod_cm&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[id_produto]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;id_produto&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[largura_prod_cm]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;largura_prod_cm&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[nome_categoria]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;nome_categoria&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[peso_produto_g]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;peso_produto_g&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Origem_Produto.Saídas[Saída de Origem OLE DB].Colunas[preco_prod]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;preco_prod&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Coluna Derivada&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Comando OLE DB&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Unir Tudo&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Coluna Derivada 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Inserir Destino&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;Data_Inicio&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;Data_Fim&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_DimensaoProduto\Inserir Destino">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

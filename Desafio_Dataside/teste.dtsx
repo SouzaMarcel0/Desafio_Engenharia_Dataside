@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2023 4:29:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ACER-NITRO-5"
+  DTS:CreatorName="ACER-NITRO-5\anton"
+  DTS:DTSID="{70BF102D-776B-4ABD-A8AF-5728D9A1B871}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5209.0"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{B942AF86-5A99-4ECB-8866-53B49CFFAC0A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>

@@ -1,0 +1,812 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/31/2023 1:47:44 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-PCFB7AV"
+  DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
+  DTS:DTSID="{63507F2D-9ACC-4DFA-9BCA-DD89BF07E340}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{941F0EFB-5A64-43BA-950B-5AA5C64CCF40}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga_DIM_Tempo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarefa Fluxo de Dados"
+      DTS:Disabled="True"
+      DTS:DTSID="{628B8980-70AF-452A-87B4-C7B7E7D0E5D8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_DIM_Tempo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_DIM_Tempo\DIM_TEMPO"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino OLE DB"
+              name="DIM_TEMPO"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">[DIM_TEMPO]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB]"
+                  errorOrTruncationOperation="Inserir"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de Destino OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[SKData]"
+                      cachedDataType="i4"
+                      cachedName="SKData"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SKData]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SKData]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[Data]"
+                      cachedDataType="dbDate"
+                      cachedName="Data"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Data]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Data]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[Ano]"
+                      cachedDataType="i4"
+                      cachedName="Ano"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Ano]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Ano]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[SemestreNum]"
+                      cachedDataType="i4"
+                      cachedName="SemestreNum"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SemestreNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemestreNum]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[Semestre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="Semestre"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Semestre]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Semestre]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[TrimestreNum]"
+                      cachedDataType="i4"
+                      cachedName="TrimestreNum"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[TrimestreNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[TrimestreNum]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[Trimestre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="Trimestre"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Trimestre]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Trimestre]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[MesNum]"
+                      cachedDataType="i4"
+                      cachedName="MesNum"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[MesNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[MesNum]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[Mes]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Mes"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Mes]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Mes]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[dia]"
+                      cachedDataType="i4"
+                      cachedName="dia"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[dia]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[dia]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[DiaSemanaNum]"
+                      cachedDataType="i4"
+                      cachedName="DiaSemanaNum"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[DiaSemanaNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[DiaSemanaNum]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[DiaSemana]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="DiaSemana"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[DiaSemana]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[DiaSemana]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[SemanaAnoNum]"
+                      cachedDataType="i4"
+                      cachedName="SemanaAnoNum"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SemanaAnoNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemanaAnoNum]" />
+                    <inputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].Columns[SemanaAno]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="SemanaAno"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SemanaAno]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemanaAno]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SKData]"
+                      dataType="i4"
+                      name="SKData" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Data]"
+                      dataType="dbDate"
+                      name="Data" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Ano]"
+                      dataType="i4"
+                      name="Ano" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SemestreNum]"
+                      dataType="i4"
+                      name="SemestreNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Semestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="Semestre" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[TrimestreNum]"
+                      dataType="i4"
+                      name="TrimestreNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Trimestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="Trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[MesNum]"
+                      dataType="i4"
+                      name="MesNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[Mes]"
+                      dataType="wstr"
+                      length="30"
+                      name="Mes" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[dia]"
+                      dataType="i4"
+                      name="dia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[DiaSemanaNum]"
+                      dataType="i4"
+                      name="DiaSemanaNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[DiaSemana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="DiaSemana" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SemanaAnoNum]"
+                      dataType="i4"
+                      name="SemanaAnoNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB].ExternalColumns[SemanaAno]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="SemanaAno" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Outputs[Saída de Erro de Destino OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Destino OLE DB"
+                  synchronousInputId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\DIM_TEMPO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\DIM_TEMPO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\DIM_TEMPO.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+              description="Origem OLE DB"
+              name="Origem_DimensaoTempo"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SET LANGUAGE 'Brazilian'
+declare @startDate date;
+declare @endDate date;
+
+select @startDate = '20160101';
+select @endDate = '20301231';
+
+with dateRange as
+(
+  select dt = @startDate
+  where @startDate &lt; @endDate
+  union all
+  select dateadd(dd, 1, dt)
+  from dateRange
+  where dateadd(dd, 1, dt) &lt;= @endDate
+)
+	select
+		convert(int, format(dt, 'yyyyMMdd')) as SKData,
+		dt AS Data,
+		DATEPART(YEAR, dt) as Ano,
+		CASE
+		WHEN DATEPART(QUARTER, dt) IN(1,2) THEN 1
+		ELSE 2
+		END AS SemestreNum,
+		CASE
+		WHEN (convert(varchar(1),DATEPART(QUARTER, dt))) IN(1,2) THEN '1° Semestre'
+		ELSE '2° Semestre'
+		END AS Semestre,
+		DATEPART(QUARTER, dt) AS TrimestreNum,
+			(convert(varchar(1),DATEPART(QUARTER, dt)) + '° Trimestre') AS Trimestre,
+		DATEPART(month, dt) as MesNum,
+		DATENAME(month, dt) as Mes,
+		DATEPART(day, dt) as dia,
+		DATEPART(Weekday, dt) as DiaSemanaNum,
+		case
+		 when datepart(weekday, dt) = 1 then 'Domingo'
+		 when datepart(weekday, dt) = 2 then 'Segunda'
+		 when datepart(weekday, dt) = 3 then 'Terça'
+		 when datepart(weekday, dt) = 4 then 'Quarta'
+		 when datepart(weekday, dt) = 5 then 'Quinta'
+		 when datepart(weekday, dt) = 6 then 'Sexta'
+	     when datepart(weekday, dt) = 7 then 'Sábado'
+		end as DiaSemana,
+		DATEPART(week, dt) as SemanaAnoNum,
+		(convert(varchar(3), DATEPART(week, dt)) + '° Semana') as SemanaAno
+from dateRange
+OPTION (MAXRECURSION 0)</property>
+                <property
+                  dataType="System.String"
+                  description="A variável que contém o comando SQL a ser executado."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Connections[OleDbConnection]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB]"
+                  name="Saída de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SKData]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SKData]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SKData]"
+                      name="SKData"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Data]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Data]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Data]"
+                      name="Data"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Ano]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Ano]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Ano]"
+                      name="Ano"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemestreNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SemestreNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemestreNum]"
+                      name="SemestreNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Semestre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Semestre]"
+                      length="11"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Semestre]"
+                      name="Semestre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[TrimestreNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[TrimestreNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[TrimestreNum]"
+                      name="TrimestreNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Trimestre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Trimestre]"
+                      length="12"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Trimestre]"
+                      name="Trimestre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[MesNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[MesNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[MesNum]"
+                      name="MesNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Mes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Mes]"
+                      length="30"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[Mes]"
+                      name="Mes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[dia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[dia]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[dia]"
+                      name="dia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[DiaSemanaNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[DiaSemanaNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[DiaSemanaNum]"
+                      name="DiaSemanaNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[DiaSemana]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[DiaSemana]"
+                      length="7"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[DiaSemana]"
+                      name="DiaSemana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemanaAnoNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SemanaAnoNum]"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemanaAnoNum]"
+                      name="SemanaAnoNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemanaAno]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SemanaAno]"
+                      length="11"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].Columns[SemanaAno]"
+                      name="SemanaAno"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SKData]"
+                      dataType="i4"
+                      name="SKData" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Data]"
+                      dataType="dbDate"
+                      name="Data" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Ano]"
+                      dataType="i4"
+                      name="Ano" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SemestreNum]"
+                      dataType="i4"
+                      name="SemestreNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Semestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="Semestre" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[TrimestreNum]"
+                      dataType="i4"
+                      name="TrimestreNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Trimestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="Trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[MesNum]"
+                      dataType="i4"
+                      name="MesNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[Mes]"
+                      dataType="wstr"
+                      length="30"
+                      name="Mes" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[dia]"
+                      dataType="i4"
+                      name="dia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[DiaSemanaNum]"
+                      dataType="i4"
+                      name="DiaSemanaNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[DiaSemana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="DiaSemana" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SemanaAnoNum]"
+                      dataType="i4"
+                      name="SemanaAnoNum" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB].ExternalColumns[SemanaAno]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="SemanaAno" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SKData]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SKData]"
+                      name="SKData" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Data]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Data]"
+                      name="Data" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Ano]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Ano]"
+                      name="Ano" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SemestreNum]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SemestreNum]"
+                      name="SemestreNum" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Semestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Semestre]"
+                      name="Semestre" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[TrimestreNum]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[TrimestreNum]"
+                      name="TrimestreNum" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Trimestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Trimestre]"
+                      name="Trimestre" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[MesNum]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[MesNum]"
+                      name="MesNum" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Mes]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[Mes]"
+                      name="Mes" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[dia]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[dia]"
+                      name="dia" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[DiaSemanaNum]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[DiaSemanaNum]"
+                      name="DiaSemanaNum" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[DiaSemana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[DiaSemana]"
+                      name="DiaSemana" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SemanaAnoNum]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SemanaAnoNum]"
+                      name="SemanaAnoNum" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SemanaAno]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[SemanaAno]"
+                      name="SemanaAno" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_DIM_Tempo.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_DIM_Tempo\DIM_TEMPO.Inputs[Entrada de Destino OLE DB]"
+              name="Saída de Origem OLE DB"
+              startId="Package\Carga_DIM_Tempo\Origem_DimensaoTempo.Outputs[Saída de Origem OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Carga_DIM_Tempo"
+          TopLeft="204,76" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga_DIM_Tempo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Carga_DIM_Tempo\Origem_DimensaoTempo"
+          TopLeft="211,77" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Carga_DIM_Tempo\DIM_TEMPO"
+          TopLeft="212,205" />
+        <EdgeLayout
+          Id="Package\Carga_DIM_Tempo.Paths[Saída de Origem OLE DB]"
+          TopLeft="313.5,119">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.5,86"
+              Start="0,0"
+              End="-29.5,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="-4,43" />
+                  <mssgle:LineSegment
+                    End="-25.5,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.5,43"
+                    Point2="-29.5,43"
+                    Point3="-29.5,47" />
+                  <mssgle:LineSegment
+                    End="-29.5,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_DIM_Tempo\DIM_TEMPO">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_DIM_Tempo\Origem_DimensaoTempo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

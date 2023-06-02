@@ -1,0 +1,2578 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/31/2023 5:01:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-PCFB7AV"
+  DTS:CreatorName="DESKTOP-PCFB7AV\SouzaMG"
+  DTS:DTSID="{5C6C3E9F-F750-4083-A1B1-CB52AA79D4E2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{2F94189A-D94E-4460-9B2C-157E9018A1F0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga_Fato_Avaliacao"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarefa Fluxo de Dados"
+      DTS:DTSID="{0D7ED2D1-9E5C-4D7A-B7FC-83E0E8B38650}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_Fato_Avaliacao"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino OLE DB"
+              name="Carga_Fato_Avaliacao"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset">[Fato_Avaliacao]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se as colunas que contêm null terão null inserido no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica as opções a serem usadas com o carregamento rápido. Aplicável apenas se o carregamento rápido estiver ativado."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção de dados. Aplicável somente se o carregamento rápido estiver ativado."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB]"
+                  errorOrTruncationOperation="Inserir"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de Destino OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_DataEnvioPesquisa]"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_DataRespostaPesquisa]"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].Columns[nota_avaliacao]"
+                      cachedDataType="ui1"
+                      cachedName="nota_avaliacao"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[nota_avaliacao]"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]" />
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].Columns[SK_Cliente]"
+                      cachedDataType="i4"
+                      cachedName="SK_Cliente"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_Cliente]"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      name="SK_DataEnvioPesquisa" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      name="SK_DataRespostaPesquisa" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[SK_Cliente]"
+                      dataType="i4"
+                      name="SK_Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB].ExternalColumns[nota_avaliacao]"
+                      dataType="ui1"
+                      name="nota_avaliacao" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Outputs[Saída de Erro de Destino OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Destino OLE DB"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Coluna Derivada"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Coluna Derivada"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[SK_Cliente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[SK_Cliente]"
+                      name="SK_Cliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">-1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">-1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
+              description="Origem OLE DB"
+              name="Fato_Avaliacao"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="O tempo em segundos antes que um comando expire. Zero indica uma expiração infinita."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="O comando SQL a ser executado."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+ava.[review_id] as id_avaliacao
+,cast (format ([review_creation_date], 'yyyyMMdd') as int) as SK_DataEnvioPesquisa
+,cast (format ([review_answer_timestamp], 'yyyyMMdd') as int) as SK_DataRespostaPesquisa
+,ava.[order_id] as fk_id_pedido
+,ped.customer_id as fk_id_cliente
+,ava.[review_score] as nota_avaliacao
+FROM [dbo].[STG_AvaliacaoCliente] as ava
+left join [dbo].[STG_Pedido] as ped
+on ava.order_id = ped.order_id</property>
+                <property
+                  dataType="System.String"
+                  description="A variável que contém o comando SQL a ser executado."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o modo usado para acessar o banco de dados."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Connections[OleDbConnection]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
+                  description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB]"
+                  name="Saída de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[id_avaliacao]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[id_avaliacao]"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[id_avaliacao]"
+                      name="id_avaliacao"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[SK_DataEnvioPesquisa]"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataEnvioPesquisa]"
+                      name="SK_DataEnvioPesquisa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[SK_DataRespostaPesquisa]"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataRespostaPesquisa]"
+                      name="SK_DataRespostaPesquisa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_pedido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[fk_id_pedido]"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_pedido]"
+                      name="fk_id_pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_cliente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[fk_id_cliente]"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_cliente]"
+                      name="fk_id_cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[nota_avaliacao]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[nota_avaliacao]"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[nota_avaliacao]"
+                      name="nota_avaliacao"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[id_avaliacao]"
+                      dataType="wstr"
+                      length="50"
+                      name="id_avaliacao" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      name="SK_DataEnvioPesquisa" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      name="SK_DataRespostaPesquisa" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[fk_id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      name="fk_id_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[fk_id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      name="fk_id_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].ExternalColumns[nota_avaliacao]"
+                      dataType="ui1"
+                      name="nota_avaliacao" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB]"
+                  isErrorOut="true"
+                  name="Saída de Erro de Origem OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[id_avaliacao]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[id_avaliacao]"
+                      name="id_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[SK_DataEnvioPesquisa]"
+                      name="SK_DataEnvioPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[SK_DataRespostaPesquisa]"
+                      name="SK_DataRespostaPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[fk_id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[fk_id_pedido]"
+                      name="fk_id_pedido" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[fk_id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[fk_id_cliente]"
+                      name="fk_id_cliente" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[nota_avaliacao]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[nota_avaliacao]"
+                      name="nota_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\SK_Cliente"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Pesquisa;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;6"
+              description="Une colunas adicionais aos fluxos de dados pesquisando valores de uma tabela. Por exemplo, una à coluna 'employee id' a tabela de funcionários para obter 'hire date' e 'employee name'. Essa transformação é recomendada quando a tabela de pesquisa está de acordo com a memória."
+              name="SK_Cliente"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica a instrução SQL que gera a tabela de pesquisa."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from DIM_Cliente where Data_Fim is null</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica uma instrução SQL que usa parâmetros para gerar a tabela de pesquisa."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from DIM_Cliente where Data_Fim is null) [refTable]
+where [refTable].[id_cliente] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o tipo de conexão usado para acessar o conjunto de dados de referência."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o tipo de cache da tabela de pesquisa."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica como a transformação Pesquisa trata as linhas sem entradas correspondentes no conjunto de dados de referência."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a porcentagem do cache alocada para linhas sem entradas correspondentes no conjunto de dados de referência."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso Máximo de Memória para o Cache de Referência em uma plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso Máximo de Memória para o Cache de Referência em uma plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica se os metadados de referência em um formato XML devem ser referenciados."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SK_Cliente" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="id_cliente" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cpf_cliente" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cod_postal" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cidade" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UF" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Data_Inicio" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="Data_Fim" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica a lista de identificadores de linhagem mapeados para os parâmetros usados pela instrução SQL na propriedade SQLCommand. As entradas na lista são separadas por ponto e vírgulas."
+                  name="ParameterMap">#{Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_cliente]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina se as chaves duplicadas nos dados de referência devem ser tratadas como erros quando o modo de cache cheio é usado."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="O gerenciador de conexões usado para acessar dados de pesquisa."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Inputs[Entrada de Pesquisa]"
+                  name="Entrada de Pesquisa">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Inputs[Entrada de Pesquisa].Columns[fk_id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_cliente]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica a coluna na tabela de referência que uma coluna une."
+                          name="JoinToReferenceColumn">id_cliente</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica a coluna na tabela de referência a partir da qual uma coluna é copiada."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Correspondência de Pesquisa]"
+                  errorOrTruncationOperation="Pesquisa"
+                  exclusionGroup="1"
+                  name="Saída de Correspondência de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Cliente.Inputs[Entrada de Pesquisa]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Correspondência de Pesquisa].Columns[SK_Cliente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar Coluna"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Correspondência de Pesquisa].Columns[SK_Cliente]"
+                      name="SK_Cliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica a coluna na tabela de referência a partir da qual uma coluna é copiada."
+                          name="CopyFromReferenceColumn">SK_Cliente</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída Sem Correspondência de Pesquisa]"
+                  description="A saída de Pesquisa que trata as linhas sem entradas correspondentes no conjunto de dados de referência. Use essa saída quando a propriedade NoMatchBehavior estiver definida como &quot;Enviar as linhas sem entradas correspondentes para a saída sem correspondência&quot;."
+                  exclusionGroup="1"
+                  name="Saída Sem Correspondência de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Cliente.Inputs[Entrada de Pesquisa]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Erro de Pesquisa]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Cliente.Inputs[Entrada de Pesquisa]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Erro de Pesquisa].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Erro de Pesquisa].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Erro de Pesquisa].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Erro de Pesquisa].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\SK_Tempo"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Pesquisa;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;6"
+              description="Une colunas adicionais aos fluxos de dados pesquisando valores de uma tabela. Por exemplo, una à coluna 'employee id' a tabela de funcionários para obter 'hire date' e 'employee name'. Essa transformação é recomendada quando a tabela de pesquisa está de acordo com a memória."
+              name="SK_Tempo"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica a instrução SQL que gera a tabela de pesquisa."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_TEMPO]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica uma instrução SQL que usa parâmetros para gerar a tabela de pesquisa."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_TEMPO]) [refTable]
+where [refTable].[SKData] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o tipo de conexão usado para acessar o conjunto de dados de referência."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o tipo de cache da tabela de pesquisa."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica como a transformação Pesquisa trata as linhas sem entradas correspondentes no conjunto de dados de referência."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a porcentagem do cache alocada para linhas sem entradas correspondentes no conjunto de dados de referência."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso Máximo de Memória para o Cache de Referência em uma plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso Máximo de Memória para o Cache de Referência em uma plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica se os metadados de referência em um formato XML devem ser referenciados."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SKData" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Data" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Ano" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemestreNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semestre" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TrimestreNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Trimestre" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MesNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Mes" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DiaSemanaNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DiaSemana" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SemanaAnoNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemanaAno" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica a lista de identificadores de linhagem mapeados para os parâmetros usados pela instrução SQL na propriedade SQLCommand. As entradas na lista são separadas por ponto e vírgulas."
+                  name="ParameterMap">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina se as chaves duplicadas nos dados de referência devem ser tratadas como erros quando o modo de cache cheio é usado."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="O gerenciador de conexões usado para acessar dados de pesquisa."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Inputs[Entrada de Pesquisa]"
+                  name="Entrada de Pesquisa">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Inputs[Entrada de Pesquisa].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica a coluna na tabela de referência que uma coluna une."
+                          name="JoinToReferenceColumn">SKData</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica a coluna na tabela de referência a partir da qual uma coluna é copiada."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Correspondência de Pesquisa]"
+                  errorOrTruncationOperation="Pesquisa"
+                  exclusionGroup="1"
+                  name="Saída de Correspondência de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Tempo.Inputs[Entrada de Pesquisa]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Correspondência de Pesquisa].Columns[SKData]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar Coluna"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Correspondência de Pesquisa].Columns[SKData]"
+                      name="SKData"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica a coluna na tabela de referência a partir da qual uma coluna é copiada."
+                          name="CopyFromReferenceColumn">SKData</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída Sem Correspondência de Pesquisa]"
+                  description="A saída de Pesquisa que trata as linhas sem entradas correspondentes no conjunto de dados de referência. Use essa saída quando a propriedade NoMatchBehavior estiver definida como &quot;Enviar as linhas sem entradas correspondentes para a saída sem correspondência&quot;."
+                  exclusionGroup="1"
+                  name="Saída Sem Correspondência de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Tempo.Inputs[Entrada de Pesquisa]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Erro de Pesquisa]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Tempo.Inputs[Entrada de Pesquisa]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Erro de Pesquisa].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Erro de Pesquisa].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Erro de Pesquisa].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Erro de Pesquisa].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Pesquisa;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;6"
+              description="Une colunas adicionais aos fluxos de dados pesquisando valores de uma tabela. Por exemplo, una à coluna 'employee id' a tabela de funcionários para obter 'hire date' e 'employee name'. Essa transformação é recomendada quando a tabela de pesquisa está de acordo com a memória."
+              name="SK_Tempo_2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica a instrução SQL que gera a tabela de pesquisa."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_TEMPO]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica uma instrução SQL que usa parâmetros para gerar a tabela de pesquisa."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_TEMPO]) [refTable]
+where [refTable].[SKData] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o tipo de conexão usado para acessar o conjunto de dados de referência."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica o tipo de cache da tabela de pesquisa."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica como a transformação Pesquisa trata as linhas sem entradas correspondentes no conjunto de dados de referência."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a porcentagem do cache alocada para linhas sem entradas correspondentes no conjunto de dados de referência."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso Máximo de Memória para o Cache de Referência em uma plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso Máximo de Memória para o Cache de Referência em uma plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica se os metadados de referência em um formato XML devem ser referenciados."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SKData" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Data" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Ano" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemestreNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semestre" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TrimestreNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Trimestre" dataType="DT_STR" length="12" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MesNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Mes" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DiaSemanaNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DiaSemana" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SemanaAnoNum" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SemanaAno" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica a lista de identificadores de linhagem mapeados para os parâmetros usados pela instrução SQL na propriedade SQLCommand. As entradas na lista são separadas por ponto e vírgulas."
+                  name="ParameterMap">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina se as chaves duplicadas nos dados de referência devem ser tratadas como erros quando o modo de cache cheio é usado."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Connections[OleDbConnection]"
+                  connectionManagerID="{0AF1AF08-3435-4307-8F6F-FB8B474A3C9B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DW_AREA]"
+                  description="O gerenciador de conexões usado para acessar dados de pesquisa."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Inputs[Entrada de Pesquisa]"
+                  name="Entrada de Pesquisa">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Inputs[Entrada de Pesquisa].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica a coluna na tabela de referência que uma coluna une."
+                          name="JoinToReferenceColumn">SKData</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica a coluna na tabela de referência a partir da qual uma coluna é copiada."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Correspondência de Pesquisa]"
+                  errorOrTruncationOperation="Pesquisa"
+                  exclusionGroup="1"
+                  name="Saída de Correspondência de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Inputs[Entrada de Pesquisa]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Correspondência de Pesquisa].Columns[SKData2]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar Coluna"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Correspondência de Pesquisa].Columns[SKData2]"
+                      name="SKData2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica a coluna na tabela de referência a partir da qual uma coluna é copiada."
+                          name="CopyFromReferenceColumn">SKData</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída Sem Correspondência de Pesquisa]"
+                  description="A saída de Pesquisa que trata as linhas sem entradas correspondentes no conjunto de dados de referência. Use essa saída quando a propriedade NoMatchBehavior estiver definida como &quot;Enviar as linhas sem entradas correspondentes para a saída sem correspondência&quot;."
+                  exclusionGroup="1"
+                  name="Saída Sem Correspondência de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Inputs[Entrada de Pesquisa]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Erro de Pesquisa]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Pesquisa"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Inputs[Entrada de Pesquisa]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Erro de Pesquisa].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Erro de Pesquisa].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Erro de Pesquisa].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Erro de Pesquisa].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Tratar-sk-tempo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Coluna Derivada].Columns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Coluna Derivada].Columns[SK_DataEnvioPesquisa]"
+                      name="SK_DataEnvioPesquisa"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">-1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">-1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Coluna Derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;0"
+              description="Cria novos valores de coluna aplicando expressões a colunas de entrada da transformação. Crie novas colunas ou substitua as existentes. Por exemplo, concatene os valores das colunas 'first name' e 'last name' para formar uma coluna 'full name'."
+              name="Tratar-sk2-tempo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Inputs[Entrada de Coluna Derivada]"
+                  description="Entrada para a Transformação Coluna Derivada"
+                  name="Entrada de Coluna Derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Coluna Derivada]"
+                  description="Saída Padrão da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  name="Saída de Coluna Derivada"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Coluna Derivada].Columns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computação"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Coluna Derivada].Columns[SK_DataRespostaPesquisa]"
+                      name="SK_DataRespostaPesquisa"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão de Coluna Derivada"
+                          name="Expression">-1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expressão Amigável de Coluna Derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">-1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Erro de Coluna Derivada]"
+                  description="Saída de Erro da Transformação Coluna Derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Saída de Erro de Coluna Derivada"
+                  synchronousInputId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Inputs[Entrada de Coluna Derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Erro de Coluna Derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Unir Tudo"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir Tudo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina linhas de vários fluxos de dados sem classificação. Por exemplo, adicione novamente as linhas a um fluxo de dados após a correção de erros. Se a classificação for importante, é recomendável usar a transformação Mesclagem."
+              name="Unir Tudo"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+                  name="Unir Tudo Entrada 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[id_avaliacao]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[id_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataEnvioPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataRespostaPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[fk_id_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_pedido"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_pedido]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[fk_id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[nota_avaliacao]"
+                      cachedDataType="ui1"
+                      cachedName="nota_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[nota_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1].Columns[SK_Cliente]"
+                      cachedDataType="i4"
+                      cachedName="SK_Cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Correspondência de Pesquisa].Columns[SK_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[id_avaliacao]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[id_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataEnvioPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[SK_DataRespostaPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[fk_id_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_pedido"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_pedido]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[fk_id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[fk_id_cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[nota_avaliacao]"
+                      cachedDataType="ui1"
+                      cachedName="nota_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB].Columns[nota_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1].Columns[SK_Cliente]"
+                      cachedDataType="i4"
+                      cachedName="SK_Cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Coluna Derivada].Columns[SK_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1]"
+                  name="Unir Tudo Saída 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]"
+                      name="id_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]"
+                      name="SK_DataEnvioPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]"
+                      name="SK_DataRespostaPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]"
+                      name="fk_id_pedido" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]"
+                      name="fk_id_cliente" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]"
+                      name="nota_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]"
+                      name="SK_Cliente" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir Tudo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina linhas de vários fluxos de dados sem classificação. Por exemplo, adicione novamente as linhas a um fluxo de dados após a correção de erros. Se a classificação for importante, é recomendável usar a transformação Mesclagem."
+              name="Unir Tudo 1"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1]"
+                  name="Unir Tudo Entrada 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[id_avaliacao]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[fk_id_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_pedido"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[fk_id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[nota_avaliacao]"
+                      cachedDataType="ui1"
+                      cachedName="nota_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[SK_Cliente]"
+                      cachedDataType="i4"
+                      cachedName="SK_Cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1].Columns[SKData]"
+                      cachedDataType="i4"
+                      cachedName="SKData"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Correspondência de Pesquisa].Columns[SKData]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SKData]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1]"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1].Columns[id_avaliacao]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1].Columns[fk_id_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_pedido"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1].Columns[fk_id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1].Columns[nota_avaliacao]"
+                      cachedDataType="ui1"
+                      cachedName="nota_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1].Columns[SK_Cliente]"
+                      cachedDataType="i4"
+                      cachedName="SK_Cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1]"
+                  name="Unir Tudo Saída 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]"
+                      name="id_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]"
+                      name="SK_DataEnvioPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]"
+                      name="SK_DataRespostaPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]"
+                      name="fk_id_pedido" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]"
+                      name="fk_id_cliente" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]"
+                      name="nota_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]"
+                      name="SK_Cliente" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SKData]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SKData]"
+                      name="SKData" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir Tudo;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina linhas de vários fluxos de dados sem classificação. Por exemplo, adicione novamente as linhas a um fluxo de dados após a correção de erros. Se a classificação for importante, é recomendável usar a transformação Mesclagem."
+              name="Unir Tudo 2"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1]"
+                  name="Unir Tudo Entrada 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[id_avaliacao]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[fk_id_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_pedido"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[fk_id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[nota_avaliacao]"
+                      cachedDataType="ui1"
+                      cachedName="nota_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[SK_Cliente]"
+                      cachedDataType="i4"
+                      cachedName="SK_Cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[SKData]"
+                      cachedDataType="i4"
+                      cachedName="SKData"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SKData]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SKData]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1].Columns[SKData2]"
+                      cachedDataType="i4"
+                      cachedName="SKData2"
+                      lineageId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Correspondência de Pesquisa].Columns[SKData2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SKData2]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1]"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[id_avaliacao]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[SK_DataEnvioPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataEnvioPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[SK_DataRespostaPesquisa]"
+                      cachedDataType="i4"
+                      cachedName="SK_DataRespostaPesquisa"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[fk_id_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_pedido"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[fk_id_cliente]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="fk_id_cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[nota_avaliacao]"
+                      cachedDataType="ui1"
+                      cachedName="nota_avaliacao"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[SK_Cliente]"
+                      cachedDataType="i4"
+                      cachedName="SK_Cliente"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1].Columns[SKData]"
+                      cachedDataType="i4"
+                      cachedName="SKData"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1].Columns[SKData]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificação de linhagem de coluna de saída"
+                          name="OutputColumnLineageID">#{Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SKData]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrada Unir Tudo 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1]"
+                  name="Unir Tudo Saída 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[id_avaliacao]"
+                      name="id_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataEnvioPesquisa]"
+                      name="SK_DataEnvioPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_DataRespostaPesquisa]"
+                      name="SK_DataRespostaPesquisa" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_pedido]"
+                      name="fk_id_pedido" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[fk_id_cliente]"
+                      name="fk_id_cliente" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]"
+                      dataType="ui1"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[nota_avaliacao]"
+                      name="nota_avaliacao" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SK_Cliente]"
+                      name="SK_Cliente" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SKData]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SKData]"
+                      name="SKData" />
+                    <outputColumn
+                      refId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SKData2]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1].Columns[SKData2]"
+                      name="SKData2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Coluna Derivada]"
+              endId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Entrada Unir Tudo 1]"
+              name="Saída de Coluna Derivada"
+              startId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Outputs[Saída de Coluna Derivada]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Coluna Derivada1]"
+              endId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Entrada Unir Tudo 1]"
+              name="Saída de Coluna Derivada"
+              startId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Outputs[Saída de Coluna Derivada]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Coluna Derivada2]"
+              endId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Entrada Unir Tudo 1]"
+              name="Saída de Coluna Derivada"
+              startId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Outputs[Saída de Coluna Derivada]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Correspondência de Pesquisa]"
+              endId="Package\Carga_Fato_Avaliacao\Unir Tudo.Inputs[Unir Tudo Entrada 1]"
+              name="Saída de Correspondência de Pesquisa"
+              startId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Correspondência de Pesquisa]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Correspondência de Pesquisa1]"
+              endId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Inputs[Unir Tudo Entrada 1]"
+              name="Saída de Correspondência de Pesquisa"
+              startId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Correspondência de Pesquisa]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Correspondência de Pesquisa2]"
+              endId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Inputs[Unir Tudo Entrada 1]"
+              name="Saída de Correspondência de Pesquisa"
+              startId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Correspondência de Pesquisa]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Erro de Pesquisa]"
+              endId="Package\Carga_Fato_Avaliacao\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
+              name="Saída de Erro de Pesquisa"
+              startId="Package\Carga_Fato_Avaliacao\SK_Cliente.Outputs[Saída de Erro de Pesquisa]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Erro de Pesquisa1]"
+              endId="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo.Inputs[Entrada de Coluna Derivada]"
+              name="Saída de Erro de Pesquisa"
+              startId="Package\Carga_Fato_Avaliacao\SK_Tempo.Outputs[Saída de Erro de Pesquisa]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Erro de Pesquisa2]"
+              endId="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo.Inputs[Entrada de Coluna Derivada]"
+              name="Saída de Erro de Pesquisa"
+              startId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Outputs[Saída de Erro de Pesquisa]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Fato_Avaliacao\SK_Cliente.Inputs[Entrada de Pesquisa]"
+              name="Saída de Origem OLE DB"
+              startId="Package\Carga_Fato_Avaliacao\Fato_Avaliacao.Outputs[Saída de Origem OLE DB]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Unir Tudo Saída 1]"
+              endId="Package\Carga_Fato_Avaliacao\SK_Tempo.Inputs[Entrada de Pesquisa]"
+              name="Unir Tudo Saída 1"
+              startId="Package\Carga_Fato_Avaliacao\Unir Tudo.Outputs[Unir Tudo Saída 1]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Unir Tudo Saída 11]"
+              endId="Package\Carga_Fato_Avaliacao\SK_Tempo_2.Inputs[Entrada de Pesquisa]"
+              name="Unir Tudo Saída 1"
+              startId="Package\Carga_Fato_Avaliacao\Unir Tudo 1.Outputs[Unir Tudo Saída 1]" />
+            <path
+              refId="Package\Carga_Fato_Avaliacao.Paths[Unir Tudo Saída 12]"
+              endId="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao.Inputs[Entrada de Destino OLE DB]"
+              name="Unir Tudo Saída 1"
+              startId="Package\Carga_Fato_Avaliacao\Unir Tudo 2.Outputs[Unir Tudo Saída 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
+<!--Se você editar manualmente esta seção e cometer algum erro, poderá excluí-la. -->
+<!--O pacote ainda poderá ser carregado normalmente, mas as informações de layout anteriores serão perdidas e o designer reorganizará automaticamente os elementos na superfície de design.-->
+<Objects
+  Version="8">
+  <!--Cada nó abaixo conterá propriedades que não afetam o comportamento em tempo de execução.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Carga_Fato_Avaliacao"
+          TopLeft="189,131" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga_Fato_Avaliacao">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Carga_Fato_Avaliacao\Fato_Avaliacao"
+          TopLeft="189,35" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Carga_Fato_Avaliacao\SK_Cliente"
+          TopLeft="185,178" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Carga_Fato_Avaliacao\Unir Tudo"
+          TopLeft="155,285" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Carga_Fato_Avaliacao\Coluna Derivada"
+          TopLeft="455,277" />
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Origem OLE DB]"
+          TopLeft="266.5,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.5,101"
+              Start="0,0"
+              End="-14.5,93.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.5"
+                    Point2="0,50.5"
+                    Point3="-4,50.5" />
+                  <mssgle:LineSegment
+                    End="-10.5,50.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.5,50.5"
+                    Point2="-14.5,50.5"
+                    Point3="-14.5,54.5" />
+                  <mssgle:LineSegment
+                    End="-14.5,93.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Correspondência de Pesquisa]"
+          TopLeft="252,220">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.5,65"
+              Start="0,0"
+              End="-33.5,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="-4,32.5" />
+                  <mssgle:LineSegment
+                    End="-29.5,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.5,32.5"
+                    Point2="-33.5,32.5"
+                    Point3="-33.5,36.5" />
+                  <mssgle:LineSegment
+                    End="-33.5,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-102.1240234375,37.5,170.748046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Erro de Pesquisa]"
+          TopLeft="273,220">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="262.5,57"
+              Start="0,0"
+              End="262.5,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.2035398230089" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.2035398230089"
+                    Point2="0,23.2035398230089"
+                    Point3="4,23.2035398230089" />
+                  <mssgle:LineSegment
+                    End="258.5,23.2035398230089" />
+                  <mssgle:CubicBezierSegment
+                    Point1="258.5,23.2035398230089"
+                    Point2="262.5,23.2035398230089"
+                    Point3="262.5,27.2035398230089" />
+                  <mssgle:LineSegment
+                    End="262.5,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="73.4659765625,28.2035398230089,115.568046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Carga_Fato_Avaliacao\SK_Tempo"
+          TopLeft="154,392" />
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Unir Tudo Saída 1]"
+          TopLeft="219.75,327">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Carga_Fato_Avaliacao\Tratar-sk-tempo"
+          TopLeft="465,415" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Carga_Fato_Avaliacao\Unir Tudo 1"
+          TopLeft="150,488" />
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Correspondência de Pesquisa1]"
+          TopLeft="219.5,434">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-85.3740234375,17.15234375,170.748046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Erro de Pesquisa1]"
+          TopLeft="288,413">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="177,23"
+              Start="0,0"
+              End="169.5,23">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="84.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.5,0"
+                    Point2="88.5,0"
+                    Point3="88.5,4" />
+                  <mssgle:LineSegment
+                    End="88.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="88.5,19"
+                    Point2="88.5,23"
+                    Point3="92.5,23" />
+                  <mssgle:LineSegment
+                    End="169.5,23" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="30.7159765625,-18.1953125,115.568046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Carga_Fato_Avaliacao\SK_Tempo_2"
+          TopLeft="148,577" />
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Unir Tudo Saída 11]"
+          TopLeft="219.5,530">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Carga_Fato_Avaliacao\Tratar-sk2-tempo"
+          TopLeft="480,574" />
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Erro de Pesquisa2]"
+          TopLeft="294,596.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186,0"
+              Start="0,0"
+              End="178.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="178.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="31.4659765625,5,115.568046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao"
+          TopLeft="323,745" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Carga_Fato_Avaliacao\Unir Tudo 2"
+          TopLeft="149,669" />
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Correspondência de Pesquisa2]"
+          TopLeft="219,619">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-85.3740234375,15.15234375,170.748046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Unir Tudo Saída 12]"
+          TopLeft="217,711">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="201.5,34"
+              Start="0,0"
+              End="201.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="197.5,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="197.5,17"
+                    Point2="201.5,17"
+                    Point3="201.5,21" />
+                  <mssgle:LineSegment
+                    End="201.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Coluna Derivada]"
+          TopLeft="455,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-173,8"
+              Start="0,0"
+              End="-165.5,8">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-82.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.5,0"
+                    Point2="-86.5,0"
+                    Point3="-86.5,4" />
+                  <mssgle:LineSegment
+                    End="-86.5,4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.5,4"
+                    Point2="-86.5,8"
+                    Point3="-90.5,8" />
+                  <mssgle:LineSegment
+                    End="-165.5,8" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Coluna Derivada1]"
+          TopLeft="543.5,457">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-304.166666666667,31"
+              Start="0,0"
+              End="-304.166666666667,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3837209302326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3837209302326"
+                    Point2="0,18.3837209302326"
+                    Point3="-4,18.3837209302326" />
+                  <mssgle:LineSegment
+                    End="-300.166666666667,18.3837209302326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-300.166666666667,18.3837209302326"
+                    Point2="-304.166666666667,18.3837209302326"
+                    Point3="-304.166666666667,22.3837209302326" />
+                  <mssgle:LineSegment
+                    End="-304.166666666667,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Fato_Avaliacao.Paths[Saída de Coluna Derivada2]"
+          TopLeft="561.5,616">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-323.166666666667,53"
+              Start="0,0"
+              End="-323.166666666667,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.4302325581395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.4302325581395"
+                    Point2="0,31.4302325581395"
+                    Point3="-4,31.4302325581395" />
+                  <mssgle:LineSegment
+                    End="-319.166666666667,31.4302325581395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-319.166666666667,31.4302325581395"
+                    Point2="-323.166666666667,31.4302325581395"
+                    Point3="-323.166666666667,35.4302325581395" />
+                  <mssgle:LineSegment
+                    End="-323.166666666667,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Fato_Avaliacao\Fato_Avaliacao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Fato_Avaliacao\SK_Cliente">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Fato_Avaliacao\SK_Tempo">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_TEMPO]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Fato_Avaliacao\SK_Tempo_2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_TEMPO]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Fato_Avaliacao\Carga_Fato_Avaliacao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

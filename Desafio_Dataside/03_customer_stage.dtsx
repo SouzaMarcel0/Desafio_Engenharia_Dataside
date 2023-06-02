@@ -11,8 +11,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{84351136-946E-424C-B657-32F9A4D54B4E}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{2BF2ECC3-2A57-4F90-A7E1-97B8F74F6A24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -44,13 +44,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Tarefa Fluxo de Dados"
+      DTS:refId="Package\Carga_Cliente_Stage"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarefa Fluxo de Dados"
       DTS:DTSID="{E28F9C23-42B5-4A0B-AE76-2543685D8C9D}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarefa Fluxo de Dados"
+      DTS:ObjectName="Carga_Cliente_Stage"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -58,7 +58,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Tarefa Fluxo de Dados\Origem_Cliente"
+              refId="Package\Carga_Cliente_Stage\Origem_Cliente"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
               description="Origem OLE DB"
@@ -107,7 +107,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Connections[OleDbConnection]"
+                  refId="Package\Carga_Cliente_Stage\Origem_Cliente.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
                   connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.ERP]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -115,131 +115,131 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB]"
+                  refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB]"
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_id]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_id]"
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_id]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_id]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_id]"
                       name="customer_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_unique_id]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_unique_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_unique_id]"
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_unique_id]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_unique_id]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_unique_id]"
                       name="customer_unique_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_zip_code_prefix]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_zip_code_prefix]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_zip_code_prefix]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_zip_code_prefix]"
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_zip_code_prefix]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_zip_code_prefix]"
                       name="customer_zip_code_prefix"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_city]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_city]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_city]"
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_city]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_city]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_city]"
                       name="customer_city"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_state]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_state]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_state]"
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_state]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_state]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_state]"
                       name="customer_state"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_id]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_id]"
                       dataType="wstr"
                       length="50"
                       name="customer_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_unique_id]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_unique_id]"
                       dataType="wstr"
                       length="50"
                       name="customer_unique_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_zip_code_prefix]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_zip_code_prefix]"
                       dataType="i4"
                       name="customer_zip_code_prefix" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_city]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_city]"
                       dataType="wstr"
                       length="50"
                       name="customer_city" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_state]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].ExternalColumns[customer_state]"
                       dataType="wstr"
                       length="50"
                       name="customer_state" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB]"
+                  refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB]"
                   isErrorOut="true"
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_id]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_id]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_id]"
                       name="customer_id" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_unique_id]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_unique_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_unique_id]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_unique_id]"
                       name="customer_unique_id" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_zip_code_prefix]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_zip_code_prefix]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_zip_code_prefix]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_zip_code_prefix]"
                       name="customer_zip_code_prefix" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_city]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_city]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_city]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_city]"
                       name="customer_city" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_state]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_state]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_state]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[customer_state]"
                       name="customer_state" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -248,7 +248,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tarefa Fluxo de Dados\STG_Cliente"
+              refId="Package\Carga_Cliente_Stage\STG_Cliente"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
               description="Destino OLE DB"
@@ -263,7 +263,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
-                  name="OpenRowset">[STG_Cliente]</property>
+                  name="OpenRowset">[dbo].[STG_Cliente]</property>
                 <property
                   dataType="System.String"
                   description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
@@ -305,78 +305,78 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.STAGE_AREA]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-PCFB7AV\SQLEXPRESS.STAGE_AREA]"
+                  refId="Package\Carga_Cliente_Stage\STG_Cliente.Connections[OleDbConnection]"
+                  connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB]"
+                  refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB]"
                   errorOrTruncationOperation="Inserir"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de Destino OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_id]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="customer_id"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_id]" />
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_id]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_id]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_unique_id]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_unique_id]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="customer_unique_id"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_unique_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_unique_id]" />
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_unique_id]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_unique_id]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_zip_code_prefix]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_zip_code_prefix]"
                       cachedDataType="i4"
                       cachedName="customer_zip_code_prefix"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_zip_code_prefix]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_zip_code_prefix]" />
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_zip_code_prefix]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_zip_code_prefix]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_city]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_city]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="customer_city"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_city]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_city]" />
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_city]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_city]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_state]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].Columns[customer_state]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="customer_state"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_state]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_state]" />
+                      externalMetadataColumnId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_state]"
+                      lineageId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB].Columns[customer_state]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_id]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_id]"
                       dataType="wstr"
                       length="50"
                       name="customer_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_unique_id]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_unique_id]"
                       dataType="wstr"
                       length="50"
                       name="customer_unique_id" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_zip_code_prefix]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_zip_code_prefix]"
                       dataType="i4"
                       name="customer_zip_code_prefix" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_city]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_city]"
                       dataType="wstr"
                       length="50"
                       name="customer_city" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_state]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB].ExternalColumns[customer_state]"
                       dataType="wstr"
                       length="50"
                       name="customer_state" />
@@ -385,22 +385,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB]"
+                  refId="Package\Carga_Cliente_Stage\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Saída de Erro de Destino OLE DB"
-                  synchronousInputId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB]">
+                  synchronousInputId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Cliente_Stage\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Cliente_Stage\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Cliente_Stage\STG_Cliente.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -411,10 +411,10 @@
           </components>
           <paths>
             <path
-              refId="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
-              endId="Package\Tarefa Fluxo de Dados\STG_Cliente.Inputs[Entrada de Destino OLE DB]"
+              refId="Package\Carga_Cliente_Stage.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Cliente_Stage\STG_Cliente.Inputs[Entrada de Destino OLE DB]"
               name="Saída de Origem OLE DB"
-              startId="Package\Tarefa Fluxo de Dados\Origem_Cliente.Outputs[Saída de Origem OLE DB]" />
+              startId="Package\Carga_Cliente_Stage\Origem_Cliente.Outputs[Saída de Origem OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -446,7 +446,7 @@
       DTS:From="Package\Truncar_Tabela_Customer"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restrição"
-      DTS:To="Package\Tarefa Fluxo de Dados" />
+      DTS:To="Package\Carga_Cliente_Stage" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
@@ -461,8 +461,8 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="191,42"
-          Id="Package\Tarefa Fluxo de Dados"
+          Size="184,42"
+          Id="Package\Carga_Cliente_Stage"
           TopLeft="173,180" />
         <NodeLayout
           Size="210,42"
@@ -470,7 +470,7 @@
           TopLeft="161,29" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restrição]"
-          TopLeft="267.25,71">
+          TopLeft="265.5,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -494,20 +494,20 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Tarefa Fluxo de Dados">
+    design-time-name="Package\Carga_Cliente_Stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="142,42"
-          Id="Package\Tarefa Fluxo de Dados\STG_Cliente"
+          Id="Package\Carga_Cliente_Stage\STG_Cliente"
           TopLeft="174,201" />
         <NodeLayout
           Size="156,42"
-          Id="Package\Tarefa Fluxo de Dados\Origem_Cliente"
+          Id="Package\Carga_Cliente_Stage\Origem_Cliente"
           TopLeft="177,77" />
         <EdgeLayout
-          Id="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
+          Id="Package\Carga_Cliente_Stage.Paths[Saída de Origem OLE DB]"
           TopLeft="255,119">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -537,16 +537,14 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\Origem_Cliente">
+    design-time-name="Package\Carga_Cliente_Stage\Origem_Cliente">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -559,7 +557,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\STG_Cliente">
+    design-time-name="Package\Carga_Cliente_Stage\STG_Cliente">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

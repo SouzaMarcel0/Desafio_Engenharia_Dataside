@@ -11,20 +11,20 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{2B8C1BF7-7724-44EF-ADE1-F551F23D51C2}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{6E7C5150-768E-405F-8631-9686B61C9A9F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Tarefa Fluxo de Dados"
+      DTS:refId="Package\Carga_Pagamentos"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarefa Fluxo de Dados"
       DTS:DTSID="{21598791-9E34-4556-80F6-1E320A391BE1}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarefa Fluxo de Dados"
+      DTS:ObjectName="Carga_Pagamentos"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,11 +32,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents"
+              refId="Package\Carga_Pagamentos\Origem OLE DB"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Origem OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;7"
               description="Origem OLE DB"
-              name="Origem_OrderPaymanents"
+              name="Origem OLE DB"
               usesDispositions="true"
               version="7">
               <properties>
@@ -56,7 +56,13 @@
                   dataType="System.String"
                   description="O comando SQL a ser executado."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select
+cast(concat_ws('_', order_id, payment_type, payment_value) as varchar (255)) as cod_pgto,
+payment_sequential,
+payment_type,
+payment_installments,
+payment_value
+from order_payments</property>
                 <property
                   dataType="System.String"
                   description="A variável que contém o comando SQL a ser executado."
@@ -73,7 +79,7 @@
                   dataType="System.Int32"
                   description="Especifica o modo usado para acessar o banco de dados."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="Os mapeamentos entre os parâmetros no comando SQL e as variáveis."
@@ -81,7 +87,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Connections[OleDbConnection]"
+                  refId="Package\Carga_Pagamentos\Origem OLE DB.Connections[OleDbConnection]"
                   connectionManagerID="{55F95565-A04F-4B3F-B7A3-BA25E4829265}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ERP]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -89,125 +95,128 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB]"
+                  refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB]"
                   name="Saída de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[order_id]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversão"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
-                      length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[order_id]"
-                      name="order_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_sequential]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_sequential]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_sequential]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_sequential]"
+                      externalMetadataColumnId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_sequential]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_sequential]"
                       name="payment_sequential"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_type]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_type]"
+                      externalMetadataColumnId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_type]"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_type]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_type]"
                       name="payment_type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_installments]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_installments]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_installments]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_installments]"
+                      externalMetadataColumnId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_installments]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_installments]"
                       name="payment_installments"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_value]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_value]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversão"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_value]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_value]"
+                      externalMetadataColumnId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_value]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_value]"
                       name="payment_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversão"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[cod_pgto]"
+                      length="255"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[cod_pgto]"
+                      name="cod_pgto"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[order_id]"
-                      dataType="wstr"
-                      length="50"
-                      name="order_id" />
-                    <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_sequential]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_sequential]"
                       dataType="ui1"
                       name="payment_sequential" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_type]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_type]"
                       dataType="wstr"
                       length="50"
                       name="payment_type" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_installments]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_installments]"
                       dataType="ui1"
                       name="payment_installments" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_value]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[payment_value]"
                       dataType="r8"
                       name="payment_value" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].ExternalColumns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="cod_pgto" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB]"
+                  refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB]"
                   isErrorOut="true"
                   name="Saída de Erro de Origem OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[order_id]"
-                      name="order_id" />
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[cod_pgto]"
+                      name="cod_pgto" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_sequential]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_sequential]"
                       dataType="ui1"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_sequential]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_sequential]"
                       name="payment_sequential" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_type]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_type]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_type]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_type]"
                       name="payment_type" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_installments]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_installments]"
                       dataType="ui1"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_installments]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_installments]"
                       name="payment_installments" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_value]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_value]"
                       dataType="r8"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_value]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[payment_value]"
                       name="payment_value" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Erro de Origem OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -216,11 +225,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento"
+              refId="Package\Carga_Pagamentos\STG_FormaPgto"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="Destino OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos os Direitos Reservados; http://www.microsoft.com/sql/support;4"
               description="Destino OLE DB"
-              name="STG_FormasPagamento"
+              name="STG_FormaPgto"
               usesDispositions="true"
               version="4">
               <properties>
@@ -231,7 +240,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
-                  name="OpenRowset">[dbo].[STG_FormasPagamento]</property>
+                  name="OpenRowset">[STG_FormaPgto]</property>
                 <property
                   dataType="System.String"
                   description="Especifica a variável que contém o nome do objeto de banco de dados usado para abrir um conjunto de linhas."
@@ -273,7 +282,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Connections[OleDbConnection]"
+                  refId="Package\Carga_Pagamentos\STG_FormaPgto.Connections[OleDbConnection]"
                   connectionManagerID="{94B00B37-3947-463E-95F2-07E221DF8165}:external"
                   connectionManagerRefId="Project.ConnectionManagers[STAGE_AREA]"
                   description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
@@ -281,90 +290,92 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB]"
+                  refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB]"
                   errorOrTruncationOperation="Inserir"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Entrada de Destino OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].Columns[order_id]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="order_id"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[order_id]" />
-                    <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].Columns[payment_sequential]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[payment_sequential]"
                       cachedDataType="ui1"
                       cachedName="payment_sequential"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_sequential]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_sequential]" />
+                      externalMetadataColumnId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_sequential]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_sequential]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].Columns[payment_type]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[payment_type]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="payment_type"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_type]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_type]" />
+                      externalMetadataColumnId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_type]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_type]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].Columns[payment_installments]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[payment_installments]"
                       cachedDataType="ui1"
                       cachedName="payment_installments"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_installments]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_installments]" />
+                      externalMetadataColumnId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_installments]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_installments]" />
                     <inputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].Columns[payment_value]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[payment_value]"
                       cachedDataType="r8"
                       cachedName="payment_value"
-                      externalMetadataColumnId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_value]"
-                      lineageId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB].Columns[payment_value]" />
+                      externalMetadataColumnId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_value]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[payment_value]" />
+                    <inputColumn
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].Columns[cod_pgto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="cod_pgto"
+                      externalMetadataColumnId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[cod_pgto]"
+                      lineageId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB].Columns[cod_pgto]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[order_id]"
-                      dataType="wstr"
-                      length="50"
-                      name="order_id" />
-                    <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_sequential]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_sequential]"
                       dataType="ui1"
                       name="payment_sequential" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_type]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_type]"
                       dataType="wstr"
                       length="50"
                       name="payment_type" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_installments]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_installments]"
                       dataType="ui1"
                       name="payment_installments" />
                     <externalMetadataColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_value]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[payment_value]"
                       dataType="r8"
                       name="payment_value" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB].ExternalColumns[cod_pgto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="cod_pgto" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Outputs[Saída de Erro de Destino OLE DB]"
+                  refId="Package\Carga_Pagamentos\STG_FormaPgto.Outputs[Saída de Erro de Destino OLE DB]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Saída de Erro de Destino OLE DB"
-                  synchronousInputId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB]">
+                  synchronousInputId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\Carga_Pagamentos\STG_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      refId="Package\Carga_Pagamentos\STG_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\Carga_Pagamentos\STG_FormaPgto.Outputs[Saída de Erro de Destino OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -375,22 +386,22 @@
           </components>
           <paths>
             <path
-              refId="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
-              endId="Package\Tarefa Fluxo de Dados\STG_FormasPagamento.Inputs[Entrada de Destino OLE DB]"
+              refId="Package\Carga_Pagamentos.Paths[Saída de Origem OLE DB]"
+              endId="Package\Carga_Pagamentos\STG_FormaPgto.Inputs[Entrada de Destino OLE DB]"
               name="Saída de Origem OLE DB"
-              startId="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents.Outputs[Saída de Origem OLE DB]" />
+              startId="Package\Carga_Pagamentos\Origem OLE DB.Outputs[Saída de Origem OLE DB]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Truncar_Tabela_OrderPayments"
+      DTS:refId="Package\Truncar_FormaPgto"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarefa Executar SQL"
-      DTS:DTSID="{5895d5c3-fcec-4115-b5e5-4922e4cf17c4}"
+      DTS:DTSID="{01936515-8B08-4D5A-805D-913056FBE8FE}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Truncar_Tabela_OrderPayments"
+      DTS:ObjectName="Truncar_FormaPgto"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -398,7 +409,7 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{94B00B37-3947-463E-95F2-07E221DF8165}"
           SQLTask:BypassPrepare="False"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE STG_FormasPagamento" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG_FormaPgto" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -406,11 +417,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restrição]"
       DTS:CreationName=""
-      DTS:DTSID="{F0744E7F-7BC8-41DA-9F7F-9BF91DD480FB}"
-      DTS:From="Package\Truncar_Tabela_OrderPayments"
+      DTS:DTSID="{7DE15268-C3E1-4122-AE12-4D9FFBE2020D}"
+      DTS:From="Package\Truncar_FormaPgto"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restrição"
-      DTS:To="Package\Tarefa Fluxo de Dados" />
+      DTS:To="Package\Carga_Pagamentos" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta seção CDATA contém as informações de layout do pacote. A seção inclui informações como coordenadas (x,y), largura e altura.-->
@@ -425,39 +436,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="191,42"
-          Id="Package\Tarefa Fluxo de Dados"
+          Size="177,42"
+          Id="Package\Carga_Pagamentos"
           TopLeft="146,176" />
         <NodeLayout
-          Size="240,42"
-          Id="Package\Truncar_Tabela_OrderPayments"
-          TopLeft="112,35" />
+          Size="177,42"
+          Id="Package\Truncar_FormaPgto"
+          TopLeft="224,43" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restrição]"
-          TopLeft="232,77">
+          TopLeft="312.5,85">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9.5,99"
+              EndConnector="-78,91"
               Start="0,0"
-              End="9.5,91.5">
+              End="-78,83.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5" />
+                    End="0,41.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45.5"
-                    Point2="0,49.5"
-                    Point3="4,49.5" />
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="-4,45.5" />
                   <mssgle:LineSegment
-                    End="5.5,49.5" />
+                    End="-74,45.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="5.5,49.5"
-                    Point2="9.5,49.5"
-                    Point3="9.5,53.5" />
+                    Point1="-74,45.5"
+                    Point2="-78,45.5"
+                    Point3="-78,49.5" />
                   <mssgle:LineSegment
-                    End="9.5,91.5" />
+                    End="-78,83.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -470,44 +481,32 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Tarefa Fluxo de Dados">
+    design-time-name="Package\Carga_Pagamentos">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="210,42"
-          Id="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents"
-          TopLeft="213,27" />
+          Size="158,42"
+          Id="Package\Carga_Pagamentos\Origem OLE DB"
+          TopLeft="191,116" />
         <NodeLayout
-          Size="201,42"
-          Id="Package\Tarefa Fluxo de Dados\STG_FormasPagamento"
-          TopLeft="237,141" />
+          Size="162,42"
+          Id="Package\Carga_Pagamentos\STG_FormaPgto"
+          TopLeft="195,203" />
         <EdgeLayout
-          Id="Package\Tarefa Fluxo de Dados.Paths[Saída de Origem OLE DB]"
-          TopLeft="318,69">
+          Id="Package\Carga_Pagamentos.Paths[Saída de Origem OLE DB]"
+          TopLeft="273,158">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19.5,72"
+              EndConnector="0,45"
               Start="0,0"
-              End="19.5,64.5">
+              End="0,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32"
-                    Point2="0,36"
-                    Point3="4,36" />
-                  <mssgle:LineSegment
-                    End="15.5,36" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.5,36"
-                    Point2="19.5,36"
-                    Point3="19.5,40" />
-                  <mssgle:LineSegment
-                    End="19.5,64.5" />
+                    End="0,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -520,7 +519,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\STG_FormasPagamento">
+    design-time-name="Package\Carga_Pagamentos\Origem OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -533,7 +532,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarefa Fluxo de Dados\Origem_OrderPaymanents">
+    design-time-name="Package\Carga_Pagamentos\STG_FormaPgto">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
